@@ -1,1 +1,9 @@
-﻿import type { Config } from 'tailwindcss';\n\nexport default {\n  content: ['./app/**/*.{js,ts,jsx,tsx,mdx}'],\n  theme: {\n    extend: {},\n  },\n  plugins: [],\n} satisfies Config;
+import type { Config } from 'tailwindcss';
+
+export default {
+  content: ['./app/**/*.{js,ts,jsx,tsx,mdx}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+} satisfies Config;
