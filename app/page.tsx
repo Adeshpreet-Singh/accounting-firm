@@ -1,341 +1,83 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-
-const services = [
-  { name: "Tax Services", icon: "📊", desc: "Tax preparation & planning" },
-  { name: "Bookkeeping", icon: "📚", desc: "Monthly financial records" },
-  { name: "Payroll", icon: "💰", desc: "Employee payment processing" },
-  { name: "Advisory", icon: "💡", desc: "Business consulting" },
-];
+import { useState } from 'react';
 
 export default function Home() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [formData, setFormData] = useState({ name: "", email: "", company: "", service: "", message: "" });
-
-  useEffect(() => {
-    const handleMouse = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouse);
-    return () => window.removeEventListener('mousemove', handleMouse);
-  }, []);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    if (element) { element.scrollIntoView({ behavior: 'smooth' }); element.focus(); }
+    setMenuOpen(false);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Thank you! We'll contact you within 24 hours.");
-  };
+  const services = [
+    { title: 'Tax Planning & Prep', desc: 'Individual and business tax optimization', icon: '\uD83D\uDCCB' },
+    { title: 'Bookkeeping', desc: 'Monthly financial statements and reconciliation', icon: '\uD83D\uDCCA' },
+    { title: 'Audit & Assurance', desc: 'Independent audits and compliance reviews', icon: '\u2705' },
+    { title: 'CFO Services', desc: 'Strategic financial leadership for growing companies', icon: '\uD83E\uDDD1\u200D\uD83D\uDCBC' },
+  ];
 
   return (
-    <div className="min-h-screen bg-[#faf9f7] overflow-hidden">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-stone-200">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-slate-800 to-slate-600 rounded-lg flex items-center justify-center">
-              <span className="text-white text-lg">📊</span>
+    <div className="bg-navy-50 text-gray-900 min-h-screen" style={{'--tw-bg-opacity': '1', backgroundColor: '#f0f4f8'}}>
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-900 text-white px-4 py-2 rounded-lg z-[100] focus-visible:outline-2 focus-visible:outline-white font-bold">Skip to main content</a>
+      <header>
+        <nav role="navigation" aria-label="Main navigation" className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
+          <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-blue-900 rounded-xl flex items-center justify-center text-white font-bold text-lg" aria-hidden="true">S</div>
+              <div><h1 className="text-lg font-bold text-blue-900">Sterling</h1><p className="text-[9px] text-blue-700 tracking-wider">CPA & ASSOCIATES</p></div>
             </div>
-            <span className="text-xl font-bold text-slate-800 tracking-wider">CLARITY</span>
+            <div className="hidden md:flex items-center gap-8">
+              {['Services','About','Resources','Contact'].map(item => (<button key={item} onClick={() => scrollToSection(item.toLowerCase())} aria-label={`Navigate to ${item} section`} className="text-sm text-gray-600 hover:text-blue-900 transition-colors focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 rounded">{item}</button>))}
+              <button aria-label="Schedule a free consultation" className="bg-blue-900 text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-blue-800 transition-colors focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2">Free Consult</button>
+            </div>
+            <button aria-label={menuOpen?"Close menu":"Open menu"} aria-expanded={menuOpen} className="md:hidden text-blue-900 focus-visible:outline-2 focus-visible:outline-blue-500 rounded" onClick={() => setMenuOpen(!menuOpen)}>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">{menuOpen?<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/>:<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16"/>}</svg>
+            </button>
           </div>
-          <div className="hidden md:flex items-center gap-8">
-            {["Services", "About", "Team", "Contact"].map((item) => (
-              <button 
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase())} 
-                className="text-gray-600 hover:text-slate-800 transition-colors text-sm font-medium"
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-          <button 
-            onClick={() => scrollToSection("contact")} 
-            className="bg-slate-800 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-slate-700 transition-all"
-          >
-            Free Consultation
-          </button>
-        </div>
-      </nav>
-
-      {/* Hero */}
-      <section className="relative min-h-screen flex items-center pt-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-stone-50" />
-        
-        {/* Subtle Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{ 
-            backgroundImage: 'radial-gradient(circle at 1px 1px, #64748b 1px, transparent 0)', 
-            backgroundSize: '40px 40px' 
-          }} />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full mb-8">
-              <span className="text-slate-600">✓</span>
-              <span className="text-slate-700 text-sm font-medium">Trusted by 500+ Businesses</span>
-            </div>
-
-            <h1 className="text-6xl md:text-7xl font-bold text-slate-900 mb-6 leading-tight">
-              Numbers<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-500">That Matter</span>
-            </h1>
-            
-            <p className="text-xl text-gray-600 mb-10 leading-relaxed max-w-lg">
-              Expert accounting services that help your business thrive. 
-              Clear insights, accurate numbers, trusted advice.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <button 
-                onClick={() => scrollToSection("contact")} 
-                className="bg-slate-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-slate-700 transition-all hover:scale-105"
-              >
-                Free Consultation
-              </button>
-              <button 
-                onClick={() => scrollToSection("services")} 
-                className="border-2 border-slate-800 text-slate-800 px-8 py-4 rounded-lg font-bold text-lg hover:bg-slate-50 transition-all"
-              >
-                Our Services
-              </button>
-            </div>
-
-            <div className="flex gap-8 mt-12">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-slate-800">500+</div>
-                <div className="text-xs text-gray-500 uppercase tracking-wider">Clients</div>
+        </nav>
+      </header>
+      <main id="main-content" role="main">
+        <section aria-labelledby="hero-heading" className="pt-24 pb-16 relative overflow-hidden" style={{backgroundColor: '#1e3a5f'}}>
+          <div className="absolute inset-0" aria-hidden="true"><div className="absolute top-20 right-20 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"/></div>
+          <div className="relative max-w-7xl mx-auto px-6 py-20">
+            <div className="max-w-3xl">
+              <p className="text-blue-300 text-sm font-medium mb-4">TRUSTED BY 500+ BUSINESSES</p>
+              <h2 id="hero-heading" className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-white">Financial<br/><span className="text-yellow-400">Excellence</span></h2>
+              <p className="text-xl text-blue-200 mb-8 max-w-lg">Expert CPA services that save you money and give you peace of mind. We handle the numbers so you can focus on growth.</p>
+              <div className="flex flex-wrap gap-4 mb-10">
+                <button aria-label="Schedule your free financial consultation" className="bg-yellow-500 text-gray-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-yellow-400 transition-all hover:scale-105 focus-visible:outline-2 focus-visible:outline-yellow-400 focus-visible:outline-offset-2">Free Consultation</button>
+                <button aria-label="Learn about our services" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-white/10 transition-all hover:scale-105 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2">Our Services</button>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-slate-800">25+</div>
-                <div className="text-xs text-gray-500 uppercase tracking-wider">Years</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-slate-800">$2B+</div>
-                <div className="text-xs text-gray-500 uppercase tracking-wider">Managed</div>
+              <div className="flex items-center gap-8">
+                {[{num:'$2.4M',label:'Saved for Clients'},{num:'25+',label:'Years Experience'},{num:'500+',label:'Business Clients'}].map((s,i) => (<div key={i}><div className="text-2xl font-bold text-yellow-400">{s.num}</div><div className="text-sm text-blue-300">{s.label}</div></div>))}
               </div>
             </div>
           </div>
-
-          <div className="relative">
-            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80" 
-                alt="Accounting" 
-                className="w-full h-[450px] object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-4 shadow-xl">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center">
-                  <span className="text-2xl">📊</span>
-                </div>
-                <div>
-                  <div className="font-bold text-gray-800">Trusted Partner</div>
-                  <div className="text-sm text-gray-500">25+ years experience</div>
-                </div>
-              </div>
+        </section>
+        <section id="services" aria-labelledby="services-heading" className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-16"><p className="text-blue-700 text-sm font-medium mb-4">WHAT WE DO</p><h2 id="services-heading" className="text-4xl font-bold text-blue-900 mb-4">Accounting Services</h2></div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {services.map((s,i) => (<article key={i} className="rounded-2xl p-6 hover:shadow-lg transition-all hover:scale-105" style={{backgroundColor: '#f0f4f8'}}><div className="text-4xl mb-4" aria-hidden="true">{s.icon}</div><h3 className="text-xl font-bold text-blue-900 mb-2">{s.title}</h3><p className="text-gray-600 text-sm">{s.desc}</p></article>))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section id="services" className="py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-slate-500 text-sm tracking-[0.3em] uppercase mb-4 block">What We Do</span>
-            <h2 className="text-5xl font-bold text-gray-900">Our Services</h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service, index) => (
-              <div 
-                key={index} 
-                className="group bg-gradient-to-br from-slate-50 to-stone-50 rounded-2xl p-8 hover:shadow-xl transition-all border border-slate-100 hover:border-slate-300"
-              >
-                <span className="text-5xl mb-6 block">{service.icon}</span>
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-slate-700 transition-colors">{service.name}</h3>
-                <p className="text-gray-600 text-sm">{service.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About */}
-      <section id="about" className="py-32 bg-gradient-to-br from-slate-800 to-slate-900 text-white">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <span className="text-slate-300 text-sm tracking-[0.3em] uppercase mb-4 block">Our Story</span>
-            <h2 className="text-5xl font-bold mb-8">Clarity in Numbers</h2>
-            <p className="text-slate-300 text-lg leading-relaxed mb-8">
-              For over 25 years, Clarity Accounting has been helping businesses navigate their finances 
-              with confidence. Our team of certified professionals delivers accurate, timely, and 
-              strategic financial services.
-            </p>
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-white/10 rounded-2xl p-6">
-                <div className="text-3xl font-bold">CPA</div>
-                <div className="text-slate-300 text-sm">Certified</div>
-              </div>
-              <div className="bg-white/10 rounded-2xl p-6">
-                <div className="text-3xl font-bold">24/7</div>
-                <div className="text-slate-300 text-sm">Support</div>
-              </div>
+        </section>
+        <section id="contact" aria-labelledby="contact-heading" className="py-24">
+          <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+            <div><p className="text-blue-700 text-sm font-medium mb-4">GET STARTED</p><h2 id="contact-heading" className="text-4xl font-bold text-blue-900 mb-6">Let&#39;s Talk Numbers</h2><p className="text-gray-600 mb-8">Schedule a free 30-minute consultation to discuss your tax and accounting needs.</p></div>
+            <div className="bg-white rounded-2xl shadow-xl p-8">
+              <form noValidate className="space-y-6">
+                <div><label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Your Name</label><input id="name" type="text" aria-required="true" placeholder="Chris Sterling" className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-colors"/></div>
+                <div><label htmlFor="business-type" className="block text-sm font-medium text-gray-700 mb-2">Business Type</label><select id="business-type" className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-colors"><option value="">Select type</option><option value="individual">Individual</option><option value="small-biz">Small Business</option><option value="corporation">Corporation</option><option value="nonprofit">Non-Profit</option></select></div>
+                <button type="submit" aria-label="Request your free consultation" className="w-full bg-blue-900 text-white py-4 rounded-xl font-bold hover:bg-blue-800 transition-all hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2">Request Consultation</button>
+              </form>
             </div>
           </div>
-          <div className="relative">
-            <img 
-              src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80" 
-              alt="Team" 
-              className="rounded-2xl w-full"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-slate-500 text-sm tracking-[0.3em] uppercase mb-4 block">Our Team</span>
-            <h2 className="text-5xl font-bold text-gray-900">Expert Accountants</h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { name: "John Smith", role: "Managing Partner", exp: "25 years" },
-              { name: "Sarah Chen", role: "Tax Director", exp: "18 years" },
-              { name: "Michael Brown", role: "Audit Manager", exp: "12 years" },
-            ].map((member, index) => (
-              <div key={index} className="bg-slate-50 rounded-2xl p-8 text-center border border-slate-100">
-                <div className="w-20 h-20 mx-auto bg-gradient-to-br from-slate-700 to-slate-900 rounded-full flex items-center justify-center text-2xl font-bold text-white mb-4">
-                  {member.name.split(" ").map(n => n[0]).join("")}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                <div className="text-slate-600 text-sm mb-2">{member.role}</div>
-                <div className="text-gray-500 text-sm">{member.exp} experience</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section id="contact" className="py-32 bg-slate-50">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-slate-500 text-sm tracking-[0.3em] uppercase mb-4 block">Get Started</span>
-            <h2 className="text-5xl font-bold text-gray-900">Free Consultation</h2>
-          </div>
-
-          <div className="bg-white rounded-3xl p-10 shadow-xl border border-slate-100">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <input 
-                  type="text" 
-                  value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-slate-500 focus:ring-2 focus:ring-slate-200 transition-all"
-                  placeholder="Your name"
-                  required
-                />
-                <input 
-                  type="email" 
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-slate-500 focus:ring-2 focus:ring-slate-200 transition-all"
-                  placeholder="Email"
-                  required
-                />
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                <input 
-                  type="text" 
-                  value={formData.company}
-                  onChange={(e) => setFormData({...formData, company: e.target.value})}
-                  className="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-slate-500 focus:ring-2 focus:ring-slate-200 transition-all"
-                  placeholder="Company name"
-                />
-                <select 
-                  value={formData.service}
-                  onChange={(e) => setFormData({...formData, service: e.target.value})}
-                  className="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-slate-500 focus:ring-2 focus:ring-slate-200 transition-all"
-                >
-                  <option value="">Service needed</option>
-                  {services.map((s, i) => (
-                    <option key={i} value={s.name}>{s.name}</option>
-                  ))}
-                </select>
-              </div>
-              <textarea 
-                rows={4}
-                value={formData.message}
-                onChange={(e) => setFormData({...formData, message: e.target.value})}
-                className="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-slate-500 focus:ring-2 focus:ring-slate-200 transition-all resize-none"
-                placeholder="Tell us about your business..."
-              />
-              <button 
-                type="submit" 
-                className="w-full bg-slate-800 text-white py-5 rounded-2xl font-bold text-lg hover:bg-slate-700 transition-all"
-              >
-                Request Consultation
-              </button>
-            </form>
-          </div>
-
-          <div className="mt-16 grid md:grid-cols-3 gap-8 text-center">
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
-              <span className="text-3xl mb-3 block">📍</span>
-              <p className="text-gray-600">456 Finance Street<br />Business District, NY 10005</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
-              <span className="text-3xl mb-3 block">📞</span>
-              <p className="text-gray-600">+1 (555) 678-9012</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
-              <span className="text-3xl mb-3 block">🕐</span>
-              <p className="text-gray-600">Mon-Fri: 9AM - 6PM<br />By Appointment</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-12 bg-slate-900 text-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center gap-3 mb-4 md:mb-0">
-              <div className="w-10 h-10 bg-gradient-to-br from-slate-700 to-slate-900 rounded-lg flex items-center justify-center">
-                <span className="text-white">📊</span>
-              </div>
-              <span className="text-xl font-bold tracking-wider">CLARITY ACCOUNTING</span>
-            </div>
-            <div className="flex gap-6">
-              {["LinkedIn", "Twitter", "Facebook"].map((social) => (
-                <a 
-                  key={social}
-                  href="#" 
-                  className="text-gray-400 hover:text-slate-300 transition-colors text-sm"
-                >
-                  {social}
-                </a>
-              ))}
-            </div>
-          </div>
-          <div className="border-t border-slate-800 mt-8 pt-8 text-center">
-            <p className="text-gray-500 text-sm">© 2026 Clarity Accounting. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+        </section>
+      </main>
+      <footer role="contentinfo" className="py-12 bg-blue-900"><div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6"><div className="flex items-center gap-3"><div className="w-8 h-8 bg-blue-800 rounded-lg flex items-center justify-center text-white font-bold" aria-hidden="true">S</div><span className="text-white font-bold">Sterling CPA & Associates</span></div><p className="text-blue-300 text-sm">Licensed CPAs | Since 1998</p></div></footer>
     </div>
   );
 }
