@@ -435,6 +435,37 @@ export default function Home() {
           </div>
         </section>
       
+        
+        {/* Gallery Section */}
+        <section className="py-24" aria-labelledby="gallery-heading">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <h2 id="gallery-heading" className="text-3xl md:text-4xl font-bold mb-4">Our Work</h2>
+              <p className="text-current/60">A selection of recent projects.</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {{[
+          {title: 'Before & After', img: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&q=80', desc: 'Complete renovation project'},
+          {title: 'Residential Job', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&q=80', desc: 'Professional service delivery'},
+          {title: 'Commercial Project', img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=80', desc: 'Large-scale commercial work'},
+          {title: 'Emergency Call', img: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&q=80', desc: 'Same-day emergency response'},
+          {title: 'Custom Solution', img: 'https://images.unsplash.com/photo-1585128792020-803d29415281?w=400&q=80', desc: 'Tailored to client needs'},
+          {title: 'Team in Action', img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80', desc: 'Our expert team at work'}
+              ].map((item, i) => (
+                <div key={i} className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer">
+                  <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-end">
+                    <div className="p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="font-bold text-sm">{item.title}</div>
+                      <div className="text-xs text-white/70">{item.desc}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}}
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
         <section className="py-24" aria-labelledby="faq-heading">
           <div className="max-w-4xl mx-auto px-6">
