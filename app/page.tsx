@@ -57,6 +57,7 @@ const TESTIMONIALS = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [activeService, setActiveService] = useState<number | null>(null);
 
   const scrollTo = (id: string) => {
@@ -127,7 +128,19 @@ export default function Home() {
         </nav>
       </header>
 
-      <main id="main" role="main">
+      
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{__html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "Accounting Firm",
+            "url": "https://accounting-firm.com",
+            "description": "Professional accounting firm services.",
+          })}}
+        />
+
+        <main id="main" role="main">
         {/* Hero */}
         <section className="pt-28 pb-20 md:pb-32">
           <div className="max-w-6xl mx-auto px-6">
@@ -347,7 +360,7 @@ export default function Home() {
                     <span className="text-gold text-lg mt-0.5">&#x1F4DE;</span>
                     <div>
                       <div className="font-bold">Phone</div>
-                      <div className="text-slate text-sm">(312) 555-0187</div>
+                      <div className="text-slate text-sm"><a href="tel:(312) 555-0187" className="hover:underline">(312) 555-0187</a></div>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -361,7 +374,7 @@ export default function Home() {
               </div>
 
               <div className="md:col-span-7">
-                <form className="bg-white border border-rule p-8 space-y-5" onSubmit={(e) => e.preventDefault()}>
+                <form className="bg-white border border-rule p-8 space-y-5" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); setTimeout(() => setSubmitted(false), 3000); }}>
                   <div className="grid md:grid-cols-2 gap-5">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-2">Full Name</label>
@@ -412,11 +425,38 @@ export default function Home() {
                   >
                     Request Consultation
                   </button>
+              {submitted && <p className="text-center text-green-500 text-sm mt-2 animate-pulse">Sent! We will be in touch soon.</p>}
                   <p className="text-center text-slate text-xs">
                     All information is kept strictly confidential.
                   </p>
                 </form>
               </div>
+            </div>
+          </div>
+        </section>
+      
+        {/* FAQ Section */}
+        <section className="py-24" aria-labelledby="faq-heading">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <h2 id="faq-heading" className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+              <p className="text-current/60">Everything you need to know.</p>
+            </div>
+            <div className="space-y-4">
+              {{[
+          {question: 'How do I schedule an appointment?', answer: 'Call us, text us, or fill out the contact form. We typically respond within 1 hour during business hours.'},
+          {question: 'Are you licensed and insured?', answer: 'Yes. We are fully licensed, bonded, and carry comprehensive liability insurance.'},
+          {question: 'Do you offer free estimates?', answer: 'Yes. We provide free, no-obligation estimates for all services. Call or fill out our form to get started.'},
+          {question: 'What areas do you serve?', answer: 'We serve the entire metro area. Contact us to confirm service availability in your specific location.'}
+              ].map((faq, i) => (
+                <details key={i} className="group border border-current/10 rounded-xl p-5 [&_summary]:cursor-pointer">
+                  <summary className="font-medium flex justify-between items-center list-none">
+                    {faq.question}
+                    <span className="ml-4 text-current/40 group-open:rotate-45 transition-transform">+</span>
+                  </summary>
+                  <p className="mt-3 text-current/60 text-sm leading-relaxed">{faq.answer}</p>
+                </details>
+              ))}}
             </div>
           </div>
         </section>
@@ -433,7 +473,7 @@ export default function Home() {
             </div>
             <div className="flex gap-6 text-sm text-slate">
               <span>233 S. Wacker Drive, Chicago</span>
-              <span>(312) 555-0187</span>
+              <span><a href="tel:(312) 555-0187" className="hover:underline">(312) 555-0187</a></span>
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-navy-light flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate">
@@ -444,7 +484,13 @@ export default function Home() {
               <span>IRS Circular 230 Disclosure</span>
             </div>
           </div>
-        </div>
+        
+            <div className="flex gap-4 text-sm">
+              <a href="#" className="hover:underline">Twitter</a>
+              <a href="#" className="hover:underline">LinkedIn</a>
+              <a href="#" className="hover:underline">Instagram</a>
+            </div>
+          </div>
       </footer>
     </div>
   );
