@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #f8f6f1;
+  --color-parchment: #efeadf;
+  --color-navy: #0d1b2a;
+  --color-navy-light: #1b2d45;
+  --color-gold: #c9a959;
+  --color-gold-light: #dcc07a;
+  --color-gold-muted: rgba(201, 169, 89, 0.15);
+  --color-charcoal: #2c2c2c;
+  --color-slate: #6b7280;
+  --color-rule: #d4cfc4;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-navy);
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.drop-cap::first-letter {
+  float: left;
+  font-size: 4rem;
+  line-height: 0.8;
+  padding-right: 0.5rem;
+  padding-top: 0.15rem;
+  font-weight: 700;
+  color: var(--color-gold);
+}
+
+.ornament-rule {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ornament-rule::before,
+.ornament-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-rule);
+}
+
+.pull-quote {
+  border-left: 3px solid var(--color-gold);
+  padding-left: 1.5rem;
+  font-style: italic;
+}
+
+.seal {
+  border: 2px solid var(--color-gold);
+  border-radius: 50%;
+  padding: 1rem;
+  position: relative;
+}
+
+.seal::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid var(--color-gold);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.card-editorial {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-editorial:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(13, 27, 42, 0.08);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

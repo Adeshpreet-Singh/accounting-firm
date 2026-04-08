@@ -2,82 +2,450 @@
 
 import { useState } from 'react';
 
+const SERVICES = [
+  {
+    name: 'Tax Planning',
+    desc: 'Strategic tax planning and optimization for individuals and businesses. We identify opportunities to minimize liability while ensuring full compliance.',
+    details: ['Federal & State Tax Strategy', 'Tax-Deferred Investments', 'Multi-Year Planning'],
+  },
+  {
+    name: 'Audit & Assurance',
+    desc: 'Independent audit services that strengthen stakeholder confidence and provide actionable insights into financial performance.',
+    details: ['Financial Statement Audits', 'Internal Controls Review', 'Compliance Audits'],
+  },
+  {
+    name: 'Bookkeeping',
+    desc: 'Meticulous bookkeeping that keeps your financials pristine and your decision-making data-driven.',
+    details: ['Monthly Reconciliation', 'Financial Reporting', 'Cloud Accounting Setup'],
+  },
+  {
+    name: 'CFO Advisory',
+    desc: 'Fractional CFO services delivering executive-level financial strategy without the full-time overhead.',
+    details: ['Cash Flow Management', 'Budgeting & Forecasting', 'KPI Development'],
+  },
+  {
+    name: 'Payroll Services',
+    desc: 'Comprehensive payroll management that ensures accuracy, compliance, and peace of mind for every pay cycle.',
+    details: ['Payroll Processing', 'Tax Withholding', 'Benefits Administration'],
+  },
+  {
+    name: 'Estate Tax',
+    desc: 'Preserve generational wealth with sophisticated estate tax strategies tailored to your legacy goals.',
+    details: ['Estate Tax Returns', 'Trust Tax Planning', 'Wealth Transfer Strategy'],
+  },
+];
+
+const TEAM = [
+  { name: 'Richard Whitfield', title: 'Managing Partner', focus: 'Tax Strategy & CFO Advisory', education: 'CPA, MBA — Wharton', years: 30 },
+  { name: 'Diana Mercer', title: 'Partner, Audit', focus: 'Audit & Assurance', education: 'CPA — NYU Stern', years: 22 },
+  { name: 'Jonathan Hale', title: 'Partner, Tax', focus: 'Estate & Corporate Tax', education: 'CPA, JD — Georgetown', years: 18 },
+  { name: 'Sarah Nakamura', title: 'Director', focus: 'Bookkeeping & Payroll', education: 'CPA — Columbia', years: 12 },
+];
+
+const TESTIMONIALS = [
+  {
+    text: 'Whitfield & Associates saved our company over $2.3M in tax liability last year alone. Their strategic approach is unmatched.',
+    name: 'Michael Thornton',
+    role: 'CEO, Thornton Industries',
+  },
+  {
+    text: 'The audit process was seamless. They identified control weaknesses we had overlooked for years and helped us implement lasting solutions.',
+    name: 'Linda Park',
+    role: 'CFO, Atlas Corp',
+  },
+];
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeService, setActiveService] = useState<number | null>(null);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) { element.scrollIntoView({ behavior: 'smooth' }); element.focus(); }
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setMenuOpen(false);
   };
 
-  const services = [
-    { title: 'Tax Planning & Prep', desc: 'Individual and business tax optimization', icon: '\uD83D\uDCCB' },
-    { title: 'Bookkeeping', desc: 'Monthly financial statements and reconciliation', icon: '\uD83D\uDCCA' },
-    { title: 'Audit & Assurance', desc: 'Independent audits and compliance reviews', icon: '\u2705' },
-    { title: 'CFO Services', desc: 'Strategic financial leadership for growing companies', icon: '\uD83E\uDDD1\u200D\uD83D\uDCBC' },
-  ];
-
   return (
-    <div className="bg-navy-50 text-gray-900 min-h-screen" style={{'--tw-bg-opacity': '1', backgroundColor: '#f0f4f8'}}>
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-900 text-white px-4 py-2 rounded-lg z-[100] focus-visible:outline-2 focus-visible:outline-white font-bold">Skip to main content</a>
+    <div className="min-h-screen bg-ivory text-navy">
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-navy text-ivory px-4 py-2 rounded z-[100] font-bold">
+        Skip to main content
+      </a>
+
       <header>
-        <nav role="navigation" aria-label="Main navigation" className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
-          <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-900 rounded-xl flex items-center justify-center text-white font-bold text-lg" aria-hidden="true">S</div>
-              <div><h1 className="text-lg font-bold text-blue-900">Sterling</h1><p className="text-[9px] text-blue-700 tracking-wider">CPA & ASSOCIATES</p></div>
+        <nav role="navigation" aria-label="Main navigation" className="fixed top-0 left-0 right-0 z-50 bg-ivory/95 backdrop-blur-md border-b border-rule">
+          <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+              <h1 className="text-xl tracking-[0.15em] uppercase font-bold">
+                Whitfield <span className="text-gold">&</span> Associates
+              </h1>
+              <p className="text-[10px] tracking-[0.3em] text-slate uppercase">Certified Public Accountants — Est. 1992</p>
             </div>
             <div className="hidden md:flex items-center gap-8">
-              {['Services','About','Resources','Contact'].map(item => (<button key={item} onClick={() => scrollToSection(item.toLowerCase())} aria-label={`Navigate to ${item} section`} className="text-sm text-gray-600 hover:text-blue-900 transition-colors focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 rounded">{item}</button>))}
-              <button aria-label="Schedule a free consultation" className="bg-blue-900 text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-blue-800 transition-colors focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2">Free Consult</button>
+              {['services', 'team', 'results', 'contact'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollTo(item)}
+                  className="text-sm text-charcoal hover:text-gold transition-colors tracking-wider uppercase"
+                >
+                  {item === 'services' ? 'Services' : item === 'results' ? 'Results' : item}
+                </button>
+              ))}
+              <button
+                onClick={() => scrollTo('contact')}
+                className="bg-navy text-ivory px-6 py-2.5 text-sm tracking-wider uppercase hover:bg-navy-light transition-colors"
+              >
+                Free Consultation
+              </button>
             </div>
-            <button aria-label={menuOpen?"Close menu":"Open menu"} aria-expanded={menuOpen} className="md:hidden text-blue-900 focus-visible:outline-2 focus-visible:outline-blue-500 rounded" onClick={() => setMenuOpen(!menuOpen)}>
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">{menuOpen?<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/>:<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16"/>}</svg>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="md:hidden text-navy"
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {menuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
             </button>
           </div>
+          {menuOpen && (
+            <div className="md:hidden bg-ivory border-t border-rule px-6 py-4 space-y-1">
+              {['services', 'team', 'results', 'contact'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollTo(item)}
+                  className="block w-full text-left px-4 py-3 text-charcoal hover:text-gold tracking-wider uppercase"
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          )}
         </nav>
       </header>
-      <main id="main-content" role="main">
-        <section aria-labelledby="hero-heading" className="pt-24 pb-16 relative overflow-hidden" style={{backgroundColor: '#1e3a5f'}}>
-          <div className="absolute inset-0" aria-hidden="true"><div className="absolute top-20 right-20 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"/></div>
-          <div className="relative max-w-7xl mx-auto px-6 py-20">
-            <div className="max-w-3xl">
-              <p className="text-blue-300 text-sm font-medium mb-4">TRUSTED BY 500+ BUSINESSES</p>
-              <h2 id="hero-heading" className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-white">Financial<br/><span className="text-yellow-400">Excellence</span></h2>
-              <p className="text-xl text-blue-200 mb-8 max-w-lg">Expert CPA services that save you money and give you peace of mind. We handle the numbers so you can focus on growth.</p>
-              <div className="flex flex-wrap gap-4 mb-10">
-                <button aria-label="Schedule your free financial consultation" className="bg-yellow-500 text-gray-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-yellow-400 transition-all hover:scale-105 focus-visible:outline-2 focus-visible:outline-yellow-400 focus-visible:outline-offset-2">Free Consultation</button>
-                <button aria-label="Learn about our services" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-white/10 transition-all hover:scale-105 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2">Our Services</button>
+
+      <main id="main" role="main">
+        {/* Hero */}
+        <section className="pt-28 pb-20 md:pb-32">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid md:grid-cols-12 gap-8 items-end">
+              <div className="md:col-span-8">
+                <p className="text-gold text-sm tracking-[0.3em] uppercase mb-6">Chicago &middot; Established 1992</p>
+                <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tight mb-8">
+                  Numbers tell
+                  <br />
+                  the <span className="text-gold">story.</span>
+                </h2>
+                <p className="text-xl text-slate max-w-lg leading-relaxed mb-10 drop-cap">
+                  Three decades of precision accounting and strategic financial counsel. We transform complex numbers into clear paths forward for businesses and individuals.
+                </p>
+                <div className="flex gap-4">
+                  <button
+                    onClick={() => scrollTo('contact')}
+                    className="bg-navy text-ivory px-8 py-4 text-lg tracking-wider uppercase hover:bg-navy-light transition-colors"
+                  >
+                    Free Consultation
+                  </button>
+                  <button
+                    onClick={() => scrollTo('services')}
+                    className="border-2 border-navy text-navy px-8 py-4 text-lg tracking-wider uppercase hover:bg-navy hover:text-ivory transition-colors"
+                  >
+                    Our Services
+                  </button>
+                </div>
               </div>
-              <div className="flex items-center gap-8">
-                {[{num:'$2.4M',label:'Saved for Clients'},{num:'25+',label:'Years Experience'},{num:'500+',label:'Business Clients'}].map((s,i) => (<div key={i}><div className="text-2xl font-bold text-yellow-400">{s.num}</div><div className="text-sm text-blue-300">{s.label}</div></div>))}
+              <div className="md:col-span-4 flex flex-col items-end gap-6 text-right">
+                <div className="seal w-28 h-28 flex flex-col items-center justify-center">
+                  <span className="text-gold text-2xl font-bold">30+</span>
+                  <span className="text-slate text-xs tracking-wider uppercase">Years</span>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold text-navy">$847M</div>
+                  <div className="text-sm text-slate tracking-wider uppercase">Tax savings delivered</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold text-navy">2,400+</div>
+                  <div className="text-sm text-slate tracking-wider uppercase">Clients served</div>
+                </div>
               </div>
             </div>
           </div>
         </section>
-        <section id="services" aria-labelledby="services-heading" className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16"><p className="text-blue-700 text-sm font-medium mb-4">WHAT WE DO</p><h2 id="services-heading" className="text-4xl font-bold text-blue-900 mb-4">Accounting Services</h2></div>
+
+        {/* Divider */}
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="ornament-rule text-gold text-lg">&#x2696;</div>
+        </div>
+
+        {/* Services */}
+        <section id="services" className="py-24" aria-labelledby="services-heading">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid md:grid-cols-12 gap-8 mb-16">
+              <div className="md:col-span-4">
+                <p className="text-gold text-sm tracking-[0.3em] uppercase mb-3">What We Do</p>
+                <h2 id="services-heading" className="text-4xl md:text-5xl font-bold">
+                  Our
+                  <br />
+                  Services
+                </h2>
+              </div>
+              <div className="md:col-span-8 flex items-end">
+                <p className="text-slate text-lg leading-relaxed">
+                  From tax optimization to comprehensive audit services, we deliver the financial clarity and compliance your business demands.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {SERVICES.map((svc, i) => (
+                <article
+                  key={i}
+                  className={`card-editorial bg-white border border-rule p-8 cursor-pointer ${
+                    activeService === i ? 'border-gold shadow-lg' : ''
+                  }`}
+                  onClick={() => setActiveService(activeService === i ? null : i)}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={activeService === i}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setActiveService(activeService === i ? null : i);
+                    }
+                  }}
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <h3 className="text-xl font-bold">{svc.name}</h3>
+                    <span className="text-gold text-xl">{activeService === i ? '\u2212' : '\u002B'}</span>
+                  </div>
+                  <p className="text-slate leading-relaxed mb-4 text-sm">{svc.desc}</p>
+                  {activeService === i && (
+                    <div className="border-t border-rule pt-4 mt-4">
+                      <p className="text-xs tracking-wider uppercase text-gold mb-3">Key Offerings</p>
+                      <ul className="space-y-2">
+                        {svc.details.map((d, j) => (
+                          <li key={j} className="text-sm text-charcoal flex items-center gap-2">
+                            <span className="w-1 h-1 rounded-full bg-gold" />
+                            {d}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Team */}
+        <section id="team" className="py-24 bg-navy text-ivory" aria-labelledby="team-heading">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid md:grid-cols-12 gap-8 mb-16">
+              <div className="md:col-span-5">
+                <p className="text-gold text-sm tracking-[0.3em] uppercase mb-3">Our Team</p>
+                <h2 id="team-heading" className="text-4xl md:text-5xl font-bold">
+                  The partners behind
+                  <br />
+                  your financial success.
+                </h2>
+              </div>
+              <div className="md:col-span-7 flex items-end">
+                <p className="text-slate text-lg leading-relaxed">
+                  Our partners combine deep technical expertise with strategic vision, delivering results that protect and grow your wealth.
+                </p>
+              </div>
+            </div>
+
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {services.map((s,i) => (<article key={i} className="rounded-2xl p-6 hover:shadow-lg transition-all hover:scale-105" style={{backgroundColor: '#f0f4f8'}}><div className="text-4xl mb-4" aria-hidden="true">{s.icon}</div><h3 className="text-xl font-bold text-blue-900 mb-2">{s.title}</h3><p className="text-gray-600 text-sm">{s.desc}</p></article>))}
+              {TEAM.map((member, i) => (
+                <div key={i} className="border border-gold-muted p-6 hover:border-gold/40 transition-all">
+                  <div className="w-full aspect-square bg-navy-light mb-6 flex items-center justify-center text-5xl text-gold/30">
+                    {member.name.split(' ').map(n => n[0]).join('')}
+                  </div>
+                  <div className="text-gold text-xs tracking-wider uppercase mb-1">{member.title}</div>
+                  <h3 className="text-xl font-bold mb-2">{member.name}</h3>
+                  <div className="text-slate text-sm space-y-1">
+                    <div>{member.focus}</div>
+                    <div>{member.education}</div>
+                    <div>{member.years} years of practice</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
-        <section id="contact" aria-labelledby="contact-heading" className="py-24">
-          <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
-            <div><p className="text-blue-700 text-sm font-medium mb-4">GET STARTED</p><h2 id="contact-heading" className="text-4xl font-bold text-blue-900 mb-6">Let&#39;s Talk Numbers</h2><p className="text-gray-600 mb-8">Schedule a free 30-minute consultation to discuss your tax and accounting needs.</p></div>
-            <div className="bg-white rounded-2xl shadow-xl p-8">
-              <form noValidate className="space-y-6">
-                <div><label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Your Name</label><input id="name" type="text" aria-required="true" placeholder="Chris Sterling" className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-colors"/></div>
-                <div><label htmlFor="business-type" className="block text-sm font-medium text-gray-700 mb-2">Business Type</label><select id="business-type" className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-colors"><option value="">Select type</option><option value="individual">Individual</option><option value="small-biz">Small Business</option><option value="corporation">Corporation</option><option value="nonprofit">Non-Profit</option></select></div>
-                <button type="submit" aria-label="Request your free consultation" className="w-full bg-blue-900 text-white py-4 rounded-xl font-bold hover:bg-blue-800 transition-all hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2">Request Consultation</button>
-              </form>
+
+        {/* Results / Testimonials */}
+        <section id="results" className="py-24" aria-labelledby="results-heading">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <p className="text-gold text-sm tracking-[0.3em] uppercase mb-3">Proven Results</p>
+              <h2 id="results-heading" className="text-4xl md:text-5xl font-bold">
+                What our clients say
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {TESTIMONIALS.map((t, i) => (
+                <blockquote key={i} className="pull-quote">
+                  <p className="text-xl leading-relaxed mb-6 italic">&ldquo;{t.text}&rdquo;</p>
+                  <footer>
+                    <cite className="not-italic">
+                      <span className="font-bold">{t.name}</span>
+                      <br />
+                      <span className="text-slate text-sm">{t.role}</span>
+                    </cite>
+                  </footer>
+                </blockquote>
+              ))}
+            </div>
+
+            {/* Awards */}
+            <div className="mt-20 grid md:grid-cols-4 gap-6 text-center">
+              {[
+                { label: 'AICPA Member', sub: 'Peer Reviewed' },
+                { label: 'Top 100 Firms', sub: 'Accounting Today' },
+                { label: 'QuickBooks ProAdvisor', sub: 'Elite Partner' },
+                { label: 'BBB A+ Rating', sub: 'Accredited Business' },
+              ].map((award, i) => (
+                <div key={i} className="border border-rule p-6">
+                  <div className="text-lg font-bold mb-1">{award.label}</div>
+                  <div className="text-slate text-sm">{award.sub}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section id="contact" className="py-24 bg-parchment" aria-labelledby="contact-heading">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid md:grid-cols-12 gap-12">
+              <div className="md:col-span-5">
+                <p className="text-gold text-sm tracking-[0.3em] uppercase mb-3">Get In Touch</p>
+                <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold mb-6">
+                  Schedule a
+                  <br />
+                  consultation.
+                </h2>
+                <p className="text-slate leading-relaxed mb-8">
+                  Your first consultation is complimentary. We will review your financial situation and outline a clear strategy for savings and compliance.
+                </p>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <span className="text-gold text-lg mt-0.5">&#x1F4CD;</span>
+                    <div>
+                      <div className="font-bold">Office</div>
+                      <div className="text-slate text-sm">233 S. Wacker Drive, Suite 4200<br />Chicago, IL 60606</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <span className="text-gold text-lg mt-0.5">&#x1F4DE;</span>
+                    <div>
+                      <div className="font-bold">Phone</div>
+                      <div className="text-slate text-sm">(312) 555-0187</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <span className="text-gold text-lg mt-0.5">&#x23F0;</span>
+                    <div>
+                      <div className="font-bold">Hours</div>
+                      <div className="text-slate text-sm">Monday &ndash; Friday, 8:00 AM &ndash; 6:00 PM<br />Extended hours during tax season</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="md:col-span-7">
+                <form className="bg-white border border-rule p-8 space-y-5" onSubmit={(e) => e.preventDefault()}>
+                  <div className="grid md:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium mb-2">Full Name</label>
+                      <input
+                        id="name"
+                        type="text"
+                        placeholder="John Smith"
+                        className="w-full border border-rule px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
+                      <input
+                        id="email"
+                        type="email"
+                        placeholder="john@example.com"
+                        className="w-full border border-rule px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="service" className="block text-sm font-medium mb-2">Service Needed</label>
+                    <select
+                      id="service"
+                      className="w-full border border-rule px-4 py-3 text-navy bg-ivory focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none"
+                    >
+                      <option value="">Select a service</option>
+                      <option value="tax">Tax Planning</option>
+                      <option value="audit">Audit &amp; Assurance</option>
+                      <option value="bookkeeping">Bookkeeping</option>
+                      <option value="cfo">CFO Advisory</option>
+                      <option value="payroll">Payroll</option>
+                      <option value="estate">Estate Tax</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium mb-2">Brief Description</label>
+                    <textarea
+                      id="message"
+                      rows={4}
+                      placeholder="Tell us about your accounting needs..."
+                      className="w-full border border-rule px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none resize-none"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full bg-navy text-ivory py-4 text-lg tracking-wider uppercase hover:bg-navy-light transition-colors"
+                  >
+                    Request Consultation
+                  </button>
+                  <p className="text-center text-slate text-xs">
+                    All information is kept strictly confidential.
+                  </p>
+                </form>
+              </div>
             </div>
           </div>
         </section>
       </main>
-      <footer role="contentinfo" className="py-12 bg-blue-900"><div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6"><div className="flex items-center gap-3"><div className="w-8 h-8 bg-blue-800 rounded-lg flex items-center justify-center text-white font-bold" aria-hidden="true">S</div><span className="text-white font-bold">Sterling CPA & Associates</span></div><p className="text-blue-300 text-sm">Licensed CPAs | Since 1998</p></div></footer>
+
+      <footer className="bg-navy text-ivory py-12">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+              <div className="text-lg tracking-[0.15em] uppercase font-bold">
+                Whitfield <span className="text-gold">&</span> Associates
+              </div>
+              <div className="text-slate text-xs tracking-wider mt-1">Certified Public Accountants</div>
+            </div>
+            <div className="flex gap-6 text-sm text-slate">
+              <span>233 S. Wacker Drive, Chicago</span>
+              <span>(312) 555-0187</span>
+            </div>
+          </div>
+          <div className="mt-8 pt-8 border-t border-navy-light flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate">
+            <span>&copy; 2026 Whitfield &amp; Associates LLP. All rights reserved.</span>
+            <div className="flex gap-6">
+              <span>Privacy Policy</span>
+              <span>Terms of Service</span>
+              <span>IRS Circular 230 Disclosure</span>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
