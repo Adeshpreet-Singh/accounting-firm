@@ -1,5 +1,141 @@
 @import "tailwindcss";
+
+@theme {
+  --color-ivory: #f8f6f1;
+  --color-parchment: #efeadf;
+  --color-navy: #0d1b2a;
+  --color-navy-light: #1b2d45;
+  --color-gold: #c9a959;
+  --color-gold-light: #dcc07a;
+  --color-gold-muted: rgba(201, 169, 89, 0.15);
+  --color-charcoal: #2c2c2c;
+  --color-slate: #6b7280;
+  --color-rule: #d4cfc4;
+}
+
 html { scroll-behavior: smooth; }
-body { background: #09090b; color: #fafafa; font-family: system-ui, sans-serif; }
-:focus-visible { outline: 2px solid #d97706; outline-offset: 2px; }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; } }
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-navy);
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/* Drop cap on first paragraph */
+.drop-cap::first-letter {
+  float: left;
+  font-size: 4rem;
+  line-height: 0.8;
+  padding-right: 0.5rem;
+  padding-top: 0.15rem;
+  font-weight: 700;
+  color: var(--color-gold);
+}
+
+/* Ornamental divider with symbol */
+.ornament-rule {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-gold);
+}
+.ornament-rule::before,
+.ornament-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-rule);
+}
+
+/* Pull quote styling */
+.pull-quote {
+  border-left: 3px solid var(--color-gold);
+  padding-left: 1.5rem;
+  font-style: italic;
+}
+
+/* Seal / badge circle */
+.seal {
+  border: 2px solid var(--color-gold);
+  border-radius: 50%;
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.seal::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid var(--color-gold);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+/* Card hover lift */
+.card-editorial {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-editorial:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(13, 27, 42, 0.08);
+}
+
+/* Team card gold underline on hover */
+.team-card {
+  position: relative;
+  overflow: hidden;
+}
+.team-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.team-card:hover::after {
+  transform: scaleX(1);
+}
+
+/* Animated stat counters */
+.stat-counter {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* Award badge */
+.award-badge {
+  border: 1px solid var(--color-rule);
+  padding: 1.5rem;
+  text-align: center;
+  transition: border-color 0.3s, background 0.3s;
+}
+.award-badge:hover {
+  border-color: var(--color-gold);
+  background: var(--color-gold-muted);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-ivory); }
+::-webkit-scrollbar-thumb { background: var(--color-gold); border-radius: 4px; }
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
