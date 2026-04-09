@@ -1,381 +1,153 @@
 'use client';
-
-import { useState, useEffect } from 'react';
-
-const SERVICES = [
-  { name: 'Tax Planning', desc: 'Strategic tax optimization for individuals and businesses. We identify opportunities to minimize liability while ensuring full compliance.', details: ['Federal & State Strategy', 'Tax-Deferred Investments', 'Multi-Year Planning'] },
-  { name: 'Audit & Assurance', desc: 'Independent audit services that strengthen stakeholder confidence and provide actionable insights into financial performance.', details: ['Financial Statement Audits', 'Internal Controls Review', 'Compliance Audits'] },
-  { name: 'Bookkeeping', desc: 'Meticulous bookkeeping that keeps your financials pristine and your decision-making data-driven.', details: ['Monthly Reconciliation', 'Financial Reporting', 'Cloud Accounting Setup'] },
-  { name: 'CFO Advisory', desc: 'Fractional CFO services delivering executive-level financial strategy without the full-time overhead.', details: ['Cash Flow Management', 'Budgeting & Forecasting', 'KPI Development'] },
-  { name: 'Payroll Services', desc: 'Comprehensive payroll management that ensures accuracy, compliance, and peace of mind for every pay cycle.', details: ['Payroll Processing', 'Tax Withholding', 'Benefits Administration'] },
-  { name: 'Estate Tax', desc: 'Preserve generational wealth with sophisticated estate tax strategies tailored to your legacy goals.', details: ['Estate Tax Returns', 'Trust Tax Planning', 'Wealth Transfer Strategy'] },
-];
-
-const TEAM = [
-  { name: 'Richard Whitfield', title: 'Managing Partner', focus: 'Tax Strategy & CFO Advisory', education: 'CPA, MBA — Wharton', years: 30 },
-  { name: 'Diana Mercer', title: 'Partner, Audit', focus: 'Audit & Assurance', education: 'CPA — NYU Stern', years: 22 },
-  { name: 'Jonathan Hale', title: 'Partner, Tax', focus: 'Estate & Corporate Tax', education: 'CPA, JD — Georgetown', years: 18 },
-  { name: 'Sarah Nakamura', title: 'Director', focus: 'Bookkeeping & Payroll', education: 'CPA — Columbia', years: 12 },
-];
-
-const TESTIMONIALS = [
-  { text: 'Whitfield & Associates saved our company over $2.3M in tax liability last year alone. Their strategic approach is unmatched.', name: 'Michael Thornton', role: 'CEO, Thornton Industries' },
-  { text: 'The audit process was seamless. They identified control weaknesses we had overlooked for years and helped us implement lasting solutions.', name: 'Linda Park', role: 'CFO, Atlas Corp' },
-];
-
-function AnimatedCounter({ target, suffix = '' }: { target: string; suffix?: string }) {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 300);
-    return () => clearTimeout(timer);
-  }, []);
-  return <span className={`stat-counter transition-opacity duration-700 ${visible ? 'opacity-100' : 'opacity-0'}`}>{target}{suffix}</span>;
-}
+import { useState } from 'react';
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [activeService, setActiveService] = useState<number | null>(null);
-
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    setMenuOpen(false);
-  };
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
-    <div className="min-h-screen bg-ivory text-navy">
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-navy text-ivory px-4 py-2 rounded z-[100] font-bold">
-        Skip to main content
-      </a>
-
-      {/* Top bar */}
-      <div className="bg-navy text-ivory py-2 text-xs tracking-widest uppercase">
-        <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-          <span>Chicago &middot; New York &middot; Boston</span>
-          <a href="tel:(312) 555-0187" className="hover:text-gold transition-colors">(312) 555-0187</a>
-        </div>
-      </div>
-
+    <div className="min-h-screen bg-slate-950 text-stone-100">
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 {{ACCENTBG}} text-white px-4 py-2 rounded z-[100] font-bold">Skip to main content</a>
       <header>
-        <nav role="navigation" aria-label="Main navigation" className="sticky top-0 z-50 bg-ivory/95 backdrop-blur-md border-b border-rule">
+        <nav role="navigation" aria-label="Main navigation" className="fixed top-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-md border-b border-current/10">
           <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div>
-              <h1 className="text-xl tracking-[0.15em] uppercase font-bold">
-                Whitfield <span className="text-gold">&</span> Associates
-              </h1>
-              <p className="text-[10px] tracking-[0.3em] text-slate uppercase">Certified Public Accountants — Est. 1992</p>
-            </div>
+            <div><h1 className="text-xl font-bold">Whitfield & Associates</h1><p className="text-xs text-stone-400 tracking-wider uppercase">CPA — Est. 1992</p></div>
             <div className="hidden md:flex items-center gap-8">
-              {['services', 'team', 'results', 'contact'].map((item) => (
-                <button key={item} onClick={() => scrollTo(item)} className="text-sm text-charcoal hover:text-gold transition-colors tracking-wider uppercase">
-                  {item}
-                </button>
-              ))}
-              <button onClick={() => scrollTo('contact')} className="bg-navy text-ivory px-6 py-2.5 text-sm tracking-wider uppercase hover:bg-navy-light transition-colors">
-                Free Consultation
-              </button>
+              <button onClick={() => scrollTo('about')} className="text-sm text-stone-400 hover:text-amber-400">About</button>
+              <button onClick={() => scrollTo('services')} className="text-sm text-stone-400 hover:text-amber-400">Services</button>
+              <button onClick={() => scrollTo('team')} className="text-sm text-stone-400 hover:text-amber-400">Team</button>
+              <button onClick={() => scrollTo('contact')} className="{{ACCENTBG}} text-white px-5 py-2 text-sm rounded-full">Free Consultation</button>
             </div>
-            <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-navy" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen}>
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {menuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
           </div>
-          {menuOpen && (
-            <div className="md:hidden bg-ivory border-t border-rule px-6 py-4 space-y-1">
-              {['services', 'team', 'results', 'contact'].map((item) => (
-                <button key={item} onClick={() => scrollTo(item)} className="block w-full text-left px-4 py-3 text-charcoal hover:text-gold tracking-wider uppercase">
-                  {item}
-                </button>
-              ))}
-            </div>
-          )}
         </nav>
       </header>
-
       <main id="main" role="main">
-        {/* Hero - Editorial Layout */}
-        <section className="pt-28 pb-20 md:pb-32">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="grid md:grid-cols-12 gap-8 items-end">
-              <div className="md:col-span-8">
-                <p className="text-gold text-sm tracking-[0.3em] uppercase mb-6">Chicago &middot; Established 1992</p>
-                <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tight mb-8">
-                  Numbers tell
-                  <br />
-                  the <span className="text-gold">story.</span>
-                </h2>
-                <p className="text-xl text-slate max-w-lg leading-relaxed mb-10 drop-cap">
-                  Three decades of precision accounting and strategic financial counsel. We transform complex numbers into clear paths forward for businesses and individuals.
-                </p>
-                <div className="flex gap-4">
-                  <button onClick={() => scrollTo('contact')} className="bg-navy text-ivory px-8 py-4 text-lg tracking-wider uppercase hover:bg-navy-light transition-colors">
-                    Free Consultation
-                  </button>
-                  <button onClick={() => scrollTo('services')} className="border-2 border-navy text-navy px-8 py-4 text-lg tracking-wider uppercase hover:bg-navy hover:text-ivory transition-colors">
-                    Our Services
-                  </button>
-                </div>
+        {/* EDITORIAL HERO - Asymmetric split */}
+        <section className="pt-24">
+          <div className="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-12 gap-8 items-end">
+            <div className="md:col-span-7">
+              <p className="text-amber-400 text-sm tracking-widest uppercase mb-6">CPA — Est. 1992</p>
+              <h2 className="text-5xl md:text-7xl font-bold leading-[0.9] tracking-tight whitespace-pre-line">Numbers tell
+the story.</h2>
+              <p className="text-xl text-stone-400 mt-8 max-w-lg leading-relaxed">Three decades of precision accounting and strategic financial counsel.</p>
+              <div className="flex gap-4 mt-10">
+                <button onClick={() => scrollTo('contact')} className="{{ACCENTBG}} text-white px-8 py-4 rounded-full">Free Consultation</button>
+                <button onClick={() => scrollTo('services')} className="border-2 border-current/20 px-8 py-4 rounded-full">Our Services</button>
               </div>
-              <div className="md:col-span-4 flex flex-col items-end gap-6 text-right">
-                <div className="seal w-28 h-28 flex flex-col items-center justify-center">
-                  <span className="text-gold text-2xl font-bold"><AnimatedCounter target="30+" /></span>
-                  <span className="text-slate text-xs tracking-wider uppercase">Years</span>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold text-navy"><AnimatedCounter target="$847M" /></div>
-                  <div className="text-sm text-slate tracking-wider uppercase">Tax savings delivered</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold text-navy"><AnimatedCounter target="2,400+" /></div>
-                  <div className="text-sm text-slate tracking-wider uppercase">Clients served</div>
-                </div>
-              </div>
+            </div>
+            <div className="md:col-span-5 flex flex-col items-end gap-6 text-right">
+            <div className="text-center"><div className="text-3xl md:text-4xl font-bold text-amber-400">$847M</div><div className="text-sm text-stone-400 mt-1">Tax savings</div></div>
+            <div className="text-center"><div className="text-3xl md:text-4xl font-bold text-amber-400">2,400+</div><div className="text-sm text-stone-400 mt-1">Clients</div></div>
+            <div className="text-center"><div className="text-3xl md:text-4xl font-bold text-amber-400">30+</div><div className="text-sm text-stone-400 mt-1">Years</div></div>
             </div>
           </div>
         </section>
-
         {/* Ornament divider */}
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="ornament-rule text-gold text-lg">&#x2696;</div>
-        </div>
-
-        {/* Services - Expandable Cards */}
+        <div className="max-w-6xl mx-auto px-6"><div className="h-px bg-current/10 my-4"></div></div>
+        {/* EXPANDABLE SERVICES - Side-by-side description */}
         <section id="services" className="py-24" aria-labelledby="services-heading">
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid md:grid-cols-12 gap-8 mb-16">
-              <div className="md:col-span-4">
-                <p className="text-gold text-sm tracking-[0.3em] uppercase mb-3">What We Do</p>
-                <h2 id="services-heading" className="text-4xl md:text-5xl font-bold">
-                  Our
-                  <br />
-                  Services
-                </h2>
-              </div>
-              <div className="md:col-span-8 flex items-end">
-                <p className="text-slate text-lg leading-relaxed">
-                  From tax optimization to comprehensive audit services, we deliver the financial clarity and compliance your business demands.
-                </p>
-              </div>
+              <div className="md:col-span-4"><p className="text-amber-400 text-sm tracking-widest uppercase mb-3">What We Do</p><h2 id="services-heading" className="text-4xl font-bold">Our Services</h2></div>
+              <div className="md:col-span-8 flex items-end"><p className="text-stone-400 text-lg">Comprehensive solutions tailored to your needs.</p></div>
             </div>
-
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {SERVICES.map((svc, i) => (
-                <article
-                  key={i}
-                  className={`card-editorial bg-white border border-rule p-8 cursor-pointer ${activeService === i ? 'border-gold shadow-lg' : ''}`}
-                  onClick={() => setActiveService(activeService === i ? null : i)}
-                  role="button"
-                  tabIndex={0}
-                  aria-expanded={activeService === i}
-                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActiveService(activeService === i ? null : i); } }}
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-xl font-bold">{svc.name}</h3>
-                    <span className="text-gold text-xl">{activeService === i ? '\u2212' : '\u002B'}</span>
-                  </div>
-                  <p className="text-slate leading-relaxed mb-4 text-sm">{svc.desc}</p>
-                  {activeService === i && (
-                    <div className="border-t border-rule pt-4 mt-4">
-                      <p className="text-xs tracking-wider uppercase text-gold mb-3">Key Offerings</p>
-                      <ul className="space-y-2">
-                        {svc.details.map((d, j) => (
-                          <li key={j} className="text-sm text-charcoal flex items-center gap-2">
-                            <span className="w-1 h-1 rounded-full bg-gold" />
-                            {d}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </article>
-              ))}
+            <article className="bg-slate-900 rounded-2xl p-8 hover:shadow-xl transition-all">
+              <div className="text-4xl mb-4">📊</div>
+              <h3 className="text-xl font-bold mb-3">Tax Planning</h3>
+              <p className="text-stone-400 leading-relaxed">Strategic tax optimization.</p>
+            </article>
+            <article className="bg-slate-900 rounded-2xl p-8 hover:shadow-xl transition-all">
+              <div className="text-4xl mb-4">🔍</div>
+              <h3 className="text-xl font-bold mb-3">Audit & Assurance</h3>
+              <p className="text-stone-400 leading-relaxed">Independent audits.</p>
+            </article>
+            <article className="bg-slate-900 rounded-2xl p-8 hover:shadow-xl transition-all">
+              <div className="text-4xl mb-4">📒</div>
+              <h3 className="text-xl font-bold mb-3">Bookkeeping</h3>
+              <p className="text-stone-400 leading-relaxed">Meticulous bookkeeping.</p>
+            </article>
+            <article className="bg-slate-900 rounded-2xl p-8 hover:shadow-xl transition-all">
+              <div className="text-4xl mb-4">💼</div>
+              <h3 className="text-xl font-bold mb-3">CFO Advisory</h3>
+              <p className="text-stone-400 leading-relaxed">Executive-level strategy.</p>
+            </article>
+            <article className="bg-slate-900 rounded-2xl p-8 hover:shadow-xl transition-all">
+              <div className="text-4xl mb-4">💰</div>
+              <h3 className="text-xl font-bold mb-3">Payroll</h3>
+              <p className="text-stone-400 leading-relaxed">Full payroll management.</p>
+            </article>
+            <article className="bg-slate-900 rounded-2xl p-8 hover:shadow-xl transition-all">
+              <div className="text-4xl mb-4">🏛️</div>
+              <h3 className="text-xl font-bold mb-3">Estate Tax</h3>
+              <p className="text-stone-400 leading-relaxed">Wealth preservation.</p>
+            </article>
             </div>
           </div>
         </section>
-
-        {/* Team */}
-        <section id="team" className="py-24 bg-navy text-ivory" aria-labelledby="team-heading">
+        {/* TEAM - Dark section with initials */}
+        <section id="team" className="py-24 bg-slate-900" aria-labelledby="team-heading">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="grid md:grid-cols-12 gap-8 mb-16">
-              <div className="md:col-span-5">
-                <p className="text-gold text-sm tracking-[0.3em] uppercase mb-3">Our Team</p>
-                <h2 id="team-heading" className="text-4xl md:text-5xl font-bold">
-                  The partners behind
-                  <br />
-                  your financial success.
-                </h2>
-              </div>
-              <div className="md:col-span-7 flex items-end">
-                <p className="text-slate text-lg leading-relaxed">
-                  Our partners combine deep technical expertise with strategic vision, delivering results that protect and grow your wealth.
-                </p>
-              </div>
+            <div class="grid md:grid-cols-12 gap-8 mb-16">
+              <div class="md:col-span-5"><p class="text-amber-400 text-sm tracking-widest uppercase mb-3">Our Team</p><h2 id="team-heading" class="text-4xl font-bold">The experts behind your success.</h2></div>
+              <div class="md:col-span-7 flex items-end"><p class="text-stone-400">Our team combines deep expertise with strategic vision.</p></div>
             </div>
-
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {TEAM.map((member, i) => (
-                <div key={i} className="team-card border border-gold-muted p-6 hover:border-gold/40 transition-all">
-                  <div className="w-full aspect-square bg-navy-light mb-6 flex items-center justify-center text-5xl text-gold/30">
-                    {member.name.split(' ').map(n => n[0]).join('')}
-                  </div>
-                  <div className="text-gold text-xs tracking-wider uppercase mb-1">{member.title}</div>
-                  <h3 className="text-xl font-bold mb-2">{member.name}</h3>
-                  <div className="text-slate text-sm space-y-1">
-                    <div>{member.focus}</div>
-                    <div>{member.education}</div>
-                    <div>{member.years} years of practice</div>
-                  </div>
-                </div>
-              ))}
+            <div className="bg-slate-900 rounded-2xl p-6 text-center">
+              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-amber-400/20 flex items-center justify-center text-2xl font-bold text-amber-400">RW</div>
+              <h3 className="font-bold">Richard Whitfield</h3><p className="text-sm text-amber-400">Managing Partner</p><p className="text-sm text-stone-400 mt-1">CPA, MBA</p></div>
+            <div className="bg-slate-900 rounded-2xl p-6 text-center">
+              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-amber-400/20 flex items-center justify-center text-2xl font-bold text-amber-400">DM</div>
+              <h3 className="font-bold">Diana Mercer</h3><p className="text-sm text-amber-400">Partner, Audit</p><p className="text-sm text-stone-400 mt-1">CPA</p></div>
+            <div className="bg-slate-900 rounded-2xl p-6 text-center">
+              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-amber-400/20 flex items-center justify-center text-2xl font-bold text-amber-400">JH</div>
+              <h3 className="font-bold">Jonathan Hale</h3><p className="text-sm text-amber-400">Partner, Tax</p><p className="text-sm text-stone-400 mt-1">CPA, JD</p></div>
+            <div className="bg-slate-900 rounded-2xl p-6 text-center">
+              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-amber-400/20 flex items-center justify-center text-2xl font-bold text-amber-400">SN</div>
+              <h3 className="font-bold">Sarah Nakamura</h3><p className="text-sm text-amber-400">Director</p><p className="text-sm text-stone-400 mt-1">CPA</p></div>
             </div>
           </div>
         </section>
-
-        {/* Results / Testimonials */}
-        <section id="results" className="py-24" aria-labelledby="results-heading">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <p className="text-gold text-sm tracking-[0.3em] uppercase mb-3">Proven Results</p>
-              <h2 id="results-heading" className="text-4xl md:text-5xl font-bold">
-                What our clients say
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {TESTIMONIALS.map((t, i) => (
-                <blockquote key={i} className="pull-quote">
-                  <p className="text-xl leading-relaxed mb-6 italic">&ldquo;{t.text}&rdquo;</p>
-                  <footer>
-                    <cite className="not-italic">
-                      <span className="font-bold">{t.name}</span>
-                      <br />
-                      <span className="text-slate text-sm">{t.role}</span>
-                    </cite>
-                  </footer>
-                </blockquote>
-              ))}
-            </div>
-
-            {/* Awards */}
-            <div className="mt-20 grid md:grid-cols-4 gap-6 text-center">
-              {[
-                { label: 'AICPA Member', sub: 'Peer Reviewed' },
-                { label: 'Top 100 Firms', sub: 'Accounting Today' },
-                { label: 'QuickBooks ProAdvisor', sub: 'Elite Partner' },
-                { label: 'BBB A+ Rating', sub: 'Accredited Business' },
-              ].map((award, i) => (
-                <div key={i} className="border border-rule p-6">
-                  <div className="text-lg font-bold mb-1">{award.label}</div>
-                  <div className="text-slate text-sm">{award.sub}</div>
-                </div>
-              ))}
-            </div>
+        {/* FAQ */}
+        <section id="faq" className="py-24" aria-labelledby="faq-heading">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="text-center mb-12"><p className="text-amber-400 text-sm tracking-widest uppercase mb-3">Questions</p><h2 id="faq-heading" className="text-4xl font-bold">FAQ</h2></div>
+            <div className="space-y-4">            <details className="group border border-current/10 rounded-xl p-5 cursor-pointer">
+              <summary className="font-medium flex justify-between items-center list-none">When is tax season?<span className="ml-4 text-stone-400 group-open:rotate-45 transition-transform text-xl">+</span></summary>
+              <p className="mt-3 text-stone-400 text-sm leading-relaxed">Federal returns due April 15.</p></details>
+            <details className="group border border-current/10 rounded-xl p-5 cursor-pointer">
+              <summary className="font-medium flex justify-between items-center list-none">Do you handle IRS audits?<span className="ml-4 text-stone-400 group-open:rotate-45 transition-transform text-xl">+</span></summary>
+              <p className="mt-3 text-stone-400 text-sm leading-relaxed">Yes, full representation.</p></details>
+            <details className="group border border-current/10 rounded-xl p-5 cursor-pointer">
+              <summary className="font-medium flex justify-between items-center list-none">What industries?<span className="ml-4 text-stone-400 group-open:rotate-45 transition-transform text-xl">+</span></summary>
+              <p className="mt-3 text-stone-400 text-sm leading-relaxed">Healthcare, tech, manufacturing.</p></details></div>
           </div>
         </section>
-
-        {/* Contact */}
-        <section id="contact" className="py-24 bg-parchment" aria-labelledby="contact-heading">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="grid md:grid-cols-12 gap-12">
-              <div className="md:col-span-5">
-                <p className="text-gold text-sm tracking-[0.3em] uppercase mb-3">Get In Touch</p>
-                <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold mb-6">
-                  Schedule a
-                  <br />
-                  consultation.
-                </h2>
-                <p className="text-slate leading-relaxed mb-8">
-                  Your first consultation is complimentary. We will review your financial situation and outline a clear strategy for savings and compliance.
-                </p>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <span className="text-gold text-lg mt-0.5">&#x1F4CD;</span>
-                    <div>
-                      <div className="font-bold">Office</div>
-                      <div className="text-slate text-sm">233 S. Wacker Drive, Suite 4200<br />Chicago, IL 60606</div>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <span className="text-gold text-lg mt-0.5">&#x1F4DE;</span>
-                    <div>
-                      <div className="font-bold">Phone</div>
-                      <div className="text-slate text-sm"><a href="tel:(312) 555-0187" className="hover:underline">(312) 555-0187</a></div>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <span className="text-gold text-lg mt-0.5">&#x23F0;</span>
-                    <div>
-                      <div className="font-bold">Hours</div>
-                      <div className="text-slate text-sm">Monday &ndash; Friday, 8:00 AM &ndash; 6:00 PM<br />Extended hours during tax season</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="md:col-span-7">
-                <form className="bg-white border border-rule p-8 space-y-5" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); setTimeout(() => setSubmitted(false), 3000); }} aria-label="Contact form">
-                  <div className="grid md:grid-cols-2 gap-5">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium mb-2">Full Name</label>
-                      <input id="name" type="text" placeholder="John Smith" className="w-full border border-rule px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none" />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
-                      <input id="email" type="email" placeholder="john@example.com" className="w-full border border-rule px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none" />
-                    </div>
-                  </div>
-                  <div>
-                    <label htmlFor="service" className="block text-sm font-medium mb-2">Service Needed</label>
-                    <select id="service" className="w-full border border-rule px-4 py-3 text-navy bg-ivory focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none">
-                      <option value="">Select a service</option>
-                      <option value="tax">Tax Planning</option>
-                      <option value="audit">Audit &amp; Assurance</option>
-                      <option value="bookkeeping">Bookkeeping</option>
-                      <option value="cfo">CFO Advisory</option>
-                      <option value="payroll">Payroll</option>
-                      <option value="estate">Estate Tax</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-2">Brief Description</label>
-                    <textarea id="message" rows={4} placeholder="Tell us about your accounting needs..." className="w-full border border-rule px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none resize-none" />
-                  </div>
-                  <button type="submit" className="w-full bg-navy text-ivory py-4 text-lg tracking-wider uppercase hover:bg-navy-light transition-colors">
-                    Request Consultation
-                  </button>
-                  {submitted && <p className="text-center text-green-600 text-sm mt-2">Thank you! We will be in touch soon.</p>}
-                  <p className="text-center text-slate text-xs">
-                    All information is kept strictly confidential.
-                  </p>
-                </form>
-              </div>
+        {/* CONTACT - Split with form */}
+        <section id="contact" className="py-24 bg-slate-900" aria-labelledby="contact-heading">
+          <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+            <div>
+              <p className="text-amber-400 text-sm tracking-widest uppercase mb-3">Get In Touch</p>
+              <h2 id="contact-heading" className="text-4xl font-bold mb-6">Free Consultation</h2>
+              <div className="space-y-6 text-stone-400">                  <div><div className="font-bold">Phone</div><a href="tel:(312) 555-0187" class="text-amber-400">(312) 555-0187</a></div>
+                  <div><div className="font-bold">Address</div><p>233 S Wacker Dr, Chicago, IL</p></div>
+                  <div><div className="font-bold">Hours</div><p>Mon–Fri 8 AM – 6 PM</p></div></div>
             </div>
+            <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); setTimeout(() => setSubmitted(false), 3000); }}>
+              <div className="grid grid-cols-2 gap-5">
+                <div><label htmlFor="name" className="block text-sm mb-2">Name</label><input id="name" type="text" placeholder="Your name" className="w-full border border-current/20 rounded-xl px-4 py-3 bg-transparent" /></div>
+                <div><label htmlFor="email" className="block text-sm mb-2">Email</label><input id="email" type="email" placeholder="you@email.com" className="w-full border border-current/20 rounded-xl px-4 py-3 bg-transparent" /></div>
+              </div>
+              <div><label htmlFor="message" className="block text-sm mb-2">Message</label><textarea id="message" rows={4} placeholder="How can we help?" className="w-full border border-current/20 rounded-xl px-4 py-3 bg-transparent resize-none" /></div>
+              <button type="submit" className="w-full {{ACCENTBG}} text-white py-4 rounded-xl">{submitted ? "Sent!" : "Free Consultation"}</button>
+            </form>
           </div>
         </section>
       </main>
-
-      <footer className="bg-navy text-ivory py-12">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div>
-              <div className="text-lg tracking-[0.15em] uppercase font-bold">
-                Whitfield <span className="text-gold">&</span> Associates
-              </div>
-              <p className="text-slate text-sm mt-1">Certified Public Accountants — Since 1992</p>
-            </div>
-            <div className="flex gap-8 text-sm text-slate">
-              <button onClick={() => scrollTo('services')} className="hover:text-gold transition-colors">Services</button>
-              <button onClick={() => scrollTo('team')} className="hover:text-gold transition-colors">Team</button>
-              <button onClick={() => scrollTo('results')} className="hover:text-gold transition-colors">Results</button>
-              <button onClick={() => scrollTo('contact')} className="hover:text-gold transition-colors">Contact</button>
-            </div>
-            <p className="text-slate text-sm">&copy; {new Date().getFullYear()} Whitfield & Associates. All rights reserved.</p>
-          </div>
+      <footer className="bg-slate-900 border-t border-current/10 py-8">
+        <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+          <div className="font-bold">Whitfield & Associates</div>
+          <p className="text-sm text-stone-400">&copy; 2026 Whitfield & Associates</p>
         </div>
       </footer>
     </div>
