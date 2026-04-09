@@ -88,9 +88,9 @@ the story.</h2>
         {/* TEAM - Dark section with initials */}
         <section id="team" className="py-24 bg-slate-900" aria-labelledby="team-heading">
           <div className="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-12 gap-8 mb-16">
-              <div class="md:col-span-5"><p class="text-amber-400 text-sm tracking-widest uppercase mb-3">Our Team</p><h2 id="team-heading" class="text-4xl font-bold">The experts behind your success.</h2></div>
-              <div class="md:col-span-7 flex items-end"><p class="text-stone-400">Our team combines deep expertise with strategic vision.</p></div>
+            <div className="grid md:grid-cols-12 gap-8 mb-16">
+              <div className="md:col-span-5"><p className="text-amber-400 text-sm tracking-widest uppercase mb-3">Our Team</p><h2 id="team-heading" className="text-4xl font-bold">The experts behind your success.</h2></div>
+              <div className="md:col-span-7 flex items-end"><p className="text-stone-400">Our team combines deep expertise with strategic vision.</p></div>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-slate-900 rounded-2xl p-6 text-center">
@@ -129,7 +129,7 @@ the story.</h2>
             <div>
               <p className="text-amber-400 text-sm tracking-widest uppercase mb-3">Get In Touch</p>
               <h2 id="contact-heading" className="text-4xl font-bold mb-6">Free Consultation</h2>
-              <div className="space-y-6 text-stone-400">                  <div><div className="font-bold">Phone</div><a href="tel:(312) 555-0187" class="text-amber-400">(312) 555-0187</a></div>
+              <div className="space-y-6 text-stone-400">                  <div><div className="font-bold">Phone</div><a href="tel:(312) 555-0187" className="text-amber-400">(312) 555-0187</a></div>
                   <div><div className="font-bold">Address</div><p>233 S Wacker Dr, Chicago, IL</p></div>
                   <div><div className="font-bold">Hours</div><p>Mon–Fri 8 AM – 6 PM</p></div></div>
             </div>
