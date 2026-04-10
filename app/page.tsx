@@ -196,7 +196,7 @@ export default function Home() {
         </div>
 
         {/* Services - Expandable editorial cards */}
-        <section id="services" className="py-24" aria-labelledby="services-heading">
+        <section id="services" className="reveal py-24" aria-labelledby="services-heading">
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid md:grid-cols-12 gap-8 mb-16">
               <div className="md:col-span-4">
@@ -249,7 +249,7 @@ export default function Home() {
         </section>
 
         {/* Team - Dark section with bios */}
-        <section id="team" className="py-24 bg-navy text-ivory" aria-labelledby="team-heading">
+        <section id="team" className="reveal py-24 bg-navy text-ivory" aria-labelledby="team-heading">
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid md:grid-cols-12 gap-8 mb-16">
               <div className="md:col-span-5">
@@ -288,7 +288,7 @@ export default function Home() {
         </section>
 
         {/* Results / Testimonials - Rotating quotes */}
-        <section id="results" className="py-24" aria-labelledby="results-heading">
+        <section id="results" className="reveal py-24" aria-labelledby="results-heading">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
               <p className="text-gold text-sm tracking-[0.3em] uppercase mb-3">Proven Results</p>
@@ -328,7 +328,7 @@ export default function Home() {
         </section>
 
         {/* Contact */}
-        <section id="contact" className="py-24 bg-parchment" aria-labelledby="contact-heading">
+        <section id="contact" className="reveal py-24 bg-parchment" aria-labelledby="contact-heading">
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid md:grid-cols-12 gap-12">
               <div className="md:col-span-5">
