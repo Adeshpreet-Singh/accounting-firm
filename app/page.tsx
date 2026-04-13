@@ -54,6 +54,15 @@ const TESTIMONIALS = [
   { text: 'As a startup founder, I needed more than a bookkeeper — I needed a financial partner. Sarah built us a cloud accounting system that scales with us. Best decision we made.', name: 'James Rivera', role: 'Founder, NovaTech', industry: 'SaaS' },
 ];
 
+const FAQS = [
+  { q: 'How much does a CPA consultation cost?', a: 'Your initial consultation with Whitfield & Associates is completely complimentary. We use this meeting to understand your financial situation, identify opportunities for savings, and outline a clear strategy. There is no obligation and no pressure — just expert guidance to help you make an informed decision about your accounting needs.' },
+  { q: 'What industries do you specialize in?', a: 'We serve a diverse client base across manufacturing, technology, professional services, real estate, healthcare, and high-net-worth individuals. Our partners bring deep vertical expertise — Diana Mercer leads our technology audit practice, Sarah Nakamura specializes in startup accounting systems, and Jonathan Hale focuses on estate planning for families with complex wealth structures.' },
+  { q: 'How quickly can you handle my tax filing?', a: 'Standard individual returns are typically completed within 2-3 weeks of receiving all documents. Business returns take 3-6 weeks depending on complexity. During tax season (January-April), we recommend engaging us early to avoid the rush. For urgent filings, we offer expedited processing. We file extensions automatically when additional time is needed to ensure accuracy.' },
+  { q: 'Do you work with clients outside of Chicago?', a: 'Yes. While our headquarters is in Chicago, we serve clients nationwide through offices in New York and Boston, and remotely across all 50 states. We handle multi-state tax filings, coordinate with local counsel when needed, and use secure cloud-based tools for document exchange and communication. Geography is never a barrier to our service.' },
+  { q: 'What accounting software do you support?', a: 'We are certified partners and Elite ProAdvisors for QuickBooks Online and Xero. We also support Sage, FreshBooks, NetSuite, and custom ERP implementations. Our team will recommend the best platform for your business size and complexity, handle migration from legacy systems, and train your staff. We stay current on all major platforms so you do not have to.' },
+  { q: 'How do you protect my financial data?', a: 'Security is non-negotiable. We use bank-level 256-bit encryption for all data transmission and storage, SOC 2 Type II compliant infrastructure, multi-factor authentication for all client portals, and strict access controls with audit logging. Our systems undergo annual third-party security audits. All employees complete cybersecurity training and sign confidentiality agreements. Your data is safer with us than in most bank vaults.' },
+];
+
 const AWARDS = [
   { label: 'AICPA Member', sub: 'Peer Reviewed — Top Rating' },
   { label: 'Top 100 Firms', sub: 'Accounting Today — 2024' },
@@ -86,6 +95,7 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [activeService, setActiveService] = useState<number | null>(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -123,7 +133,7 @@ export default function Home() {
               <p className="text-[10px] tracking-[0.3em] text-slate uppercase">Certified Public Accountants — Est. 1992</p>
             </div>
             <div className="hidden md:flex items-center gap-8">
-              {['services', 'team', 'results', 'contact'].map((item) => (
+              {['services', 'team', 'results', 'faq', 'contact'].map((item) => (
                 <button key={item} onClick={() => scrollTo(item)} className="text-sm text-charcoal hover:text-gold transition-colors tracking-wider uppercase">
                   {item}
                 </button>
@@ -140,7 +150,7 @@ export default function Home() {
           </div>
           {menuOpen && (
             <div className="md:hidden bg-ivory border-t border-rule px-6 py-4 space-y-1">
-              {['services', 'team', 'results', 'contact'].map((item) => (
+              {['services', 'team', 'results', 'faq', 'contact'].map((item) => (
                 <button key={item} onClick={() => scrollTo(item)} className="block w-full text-left px-4 py-3 text-charcoal hover:text-gold tracking-wider uppercase">
                   {item}
                 </button>
@@ -323,6 +333,40 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="reveal py-24 bg-parchment" aria-labelledby="faq-heading">
+          <div className="max-w-3xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <p className="text-gold text-sm tracking-[0.3em] uppercase mb-3">Questions & Answers</p>
+              <h2 id="faq-heading" className="text-4xl md:text-5xl font-bold">Frequently Asked Questions</h2>
+              <p className="text-slate mt-4 max-w-xl mx-auto leading-relaxed">Have a question about our services? We have answered the most common ones below. If you do not see yours, reach out — we are happy to help.</p>
+            </div>
+            <div className="space-y-4">
+              {FAQS.map((faq, i) => (
+                <div
+                  key={i}
+                  className="bg-white border border-rule overflow-hidden cursor-pointer"
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={openFaq === i}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpenFaq(openFaq === i ? null : i); } }}
+                >
+                  <div className="px-6 py-5 flex justify-between items-center">
+                    <h3 className="font-semibold text-base pr-4">{faq.q}</h3>
+                    <span className="text-gold text-xl flex-shrink-0 transition-transform" style={{ transform: openFaq === i ? 'rotate(45deg)' : 'rotate(0)' }}>+</span>
+                  </div>
+                  {openFaq === i && (
+                    <div className="px-6 pb-5">
+                      <p className="text-slate text-sm leading-relaxed">{faq.a}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </section>
