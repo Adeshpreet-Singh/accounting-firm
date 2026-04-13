@@ -130,19 +130,19 @@ export default function Home() {
               <h1 className="text-xl tracking-[0.15em] uppercase font-bold">
                 Whitfield <span className="text-gold">&</span> Associates
               </h1>
-              <p className="text-[10px] tracking-[0.3em] text-slate uppercase">Certified Public Accountants — Est. 1992</p>
+              <p className="text-base tracking-[0.3em] text-slate uppercase">Certified Public Accountants — Est. 1992</p>
             </div>
             <div className="hidden md:flex items-center gap-8">
               {['services', 'team', 'results', 'faq', 'contact'].map((item) => (
-                <button key={item} onClick={() => scrollTo(item)} className="text-base text-charcoal hover:text-gold transition-colors tracking-wider uppercase">
+                <button className="btn" key={item} onClick={() => scrollTo(item)} className="text-base text-charcoal hover:text-gold transition-colors tracking-wider uppercase">
                   {item}
                 </button>
               ))}
-              <button onClick={() => scrollTo('contact')} className="bg-navy text-ivory px-6 py-2.5 text-sm tracking-wider uppercase hover:bg-navy-light transition-colors">
+              <button className="btn" onClick={() => scrollTo('contact')} className="bg-navy text-ivory px-6 py-2.5 text-base tracking-wider uppercase hover:bg-navy-light transition-colors">
                 Free Consultation
               </button>
             </div>
-            <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-navy" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen}>
+            <button className="btn" onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-navy" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen}>
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
               </svg>
@@ -151,7 +151,7 @@ export default function Home() {
           {menuOpen && (
             <div className="md:hidden bg-ivory border-t border-rule px-6 py-4 space-y-1">
               {['services', 'team', 'results', 'faq', 'contact'].map((item) => (
-                <button key={item} onClick={() => scrollTo(item)} className="block w-full text-left px-4 py-3 text-charcoal hover:text-gold tracking-wider uppercase">
+                <button className="btn" key={item} onClick={() => scrollTo(item)} className="block w-full text-left px-4 py-3 text-charcoal hover:text-gold tracking-wider uppercase">
                   {item}
                 </button>
               ))}
@@ -174,10 +174,10 @@ export default function Home() {
                   Three decades of precision accounting and strategic financial counsel. We transform complex numbers into clear paths forward for businesses and high-net-worth individuals.
                 </p>
                 <div className="flex gap-4">
-                  <button onClick={() => scrollTo('contact')} className="bg-navy text-ivory px-8 py-4 text-lg tracking-wider uppercase hover:bg-navy-light transition-colors">
+                  <button className="btn" onClick={() => scrollTo('contact')} className="bg-navy text-ivory px-8 py-4 text-lg tracking-wider uppercase hover:bg-navy-light transition-colors">
                     Free Consultation
                   </button>
-                  <button onClick={() => scrollTo('services')} className="border-2 border-navy text-navy px-8 py-4 text-lg tracking-wider uppercase hover:bg-navy hover:text-ivory transition-colors">
+                  <button className="btn" onClick={() => scrollTo('services')} className="border-2 border-navy text-navy px-8 py-4 text-lg tracking-wider uppercase hover:bg-navy hover:text-ivory transition-colors">
                     Our Services
                   </button>
                 </div>
@@ -420,20 +420,20 @@ export default function Home() {
                   <div className="grid md:grid-cols-2 gap-5">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-2">Full Name</label>
-                      <input id="name" type="text" placeholder="John Smith" required className="w-full border-2 border-gray-300 px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none transition-colors" />
+                      <input id="name" type="text" placeholder="John Smith" required className="w-full border-2 border-gray-300 px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none transition-colors border border-gray-300 " />
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
-                      <input id="email" type="email" placeholder="john@example.com" required className="w-full border-2 border-gray-300 px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none transition-colors" />
+                      <input id="email" type="email" placeholder="john@example.com" required className="w-full border-2 border-gray-300 px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none transition-colors border border-gray-300 " />
                     </div>
                   </div>
                   <div>
                     <label htmlFor="company" className="block text-sm font-medium mb-2">Company</label>
-                    <input id="company" type="text" placeholder="Your company name" className="w-full border-2 border-gray-300 px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none transition-colors" />
+                    <input id="company" type="text" placeholder="Your company name" className="w-full border-2 border-gray-300 px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none transition-colors border border-gray-300 " />
                   </div>
                   <div>
                     <label htmlFor="service" className="block text-sm font-medium mb-2">Service Needed</label>
-                    <select id="service" className="w-full border-2 border-gray-300 px-4 py-3 text-navy bg-ivory focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none transition-colors">
+                    <select id="service" className="w-full border-2 border-gray-300 px-4 py-3 text-navy bg-ivory focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none transition-colors border border-gray-300 ">
                       <option value="">Select a service</option>
                       <option value="tax">Tax Planning & Preparation</option>
                       <option value="audit">Audit & Assurance</option>
@@ -445,7 +445,7 @@ export default function Home() {
                   </div>
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium mb-2">Tell us about your needs</label>
-                    <textarea id="message" rows={4} placeholder="Describe your accounting needs, challenges, or goals..." className="w-full border-2 border-gray-300 px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none resize-none transition-colors" />
+                    <textarea id="message" rows={4} placeholder="Describe your accounting needs, challenges, or goals..." className="w-full border-2 border-gray-300 px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none resize-none transition-colors border border-gray-300 " />
                   </div>
                   <button
                     type="submit"
@@ -494,9 +494,9 @@ export default function Home() {
           <div className="border-t border-navy-light pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-slate text-sm">&copy; {new Date().getFullYear()} Whitfield & Associates. All rights reserved.</p>
             <div className="flex gap-6 text-sm text-slate">
-              <button onClick={() => scrollTo('services')} className="hover:text-gold transition-colors">Services</button>
-              <button onClick={() => scrollTo('team')} className="hover:text-gold transition-colors">Team</button>
-              <button onClick={() => scrollTo('contact')} className="hover:text-gold transition-colors">Contact</button>
+              <button className="btn" onClick={() => scrollTo('services')} className="hover:text-gold transition-colors">Services</button>
+              <button className="btn" onClick={() => scrollTo('team')} className="hover:text-gold transition-colors">Team</button>
+              <button className="btn" onClick={() => scrollTo('contact')} className="hover:text-gold transition-colors">Contact</button>
             </div>
           </div>
         </div>
