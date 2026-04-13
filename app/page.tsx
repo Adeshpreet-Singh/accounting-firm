@@ -138,7 +138,7 @@ export default function Home() {
                   {item}
                 </button>
               ))}
-              <button onClick={() => scrollTo('contact')} className="btn bg-navy text-ivory px-6 py-2.5 text-base tracking-wider uppercase hover:bg-navy-light transition-colors">
+              <button onClick={() => scrollTo('contact')} className="btn bg-gold text-navy px-6 py-2.5 text-base tracking-wider uppercase font-bold hover:bg-gold/90 transition-colors rounded">
                 Free Consultation
               </button>
             </div>
@@ -352,12 +352,12 @@ export default function Home() {
                   aria-expanded={openFaq === i}
                   onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpenFaq(openFaq === i ? null : i); } }}
                 >
-                  <div className="px-6 py-5 flex justify-between items-center">
+                    <div className="px-6 py-7 flex justify-between items-center">
                     <h3 className="font-semibold text-base pr-4">{faq.q}</h3>
                     <span className="text-gold text-xl flex-shrink-0 transition-transform" style={{ transform: openFaq === i ? 'rotate(45deg)' : 'rotate(0)' }}>+</span>
                   </div>
                   {openFaq === i && (
-                    <div className="px-6 pb-5">
+                    <div className="px-8 pb-7">
                       <p className="text-slate text-sm leading-relaxed">{faq.a}</p>
                     </div>
                   )}
@@ -480,6 +480,8 @@ export default function Home() {
                 <div>Audit & Assurance</div>
                 <div>Bookkeeping</div>
                 <div>CFO Advisory</div>
+                <div>Payroll Services</div>
+                <div>Estate & Trust Tax</div>
               </div>
             </div>
             <div>
