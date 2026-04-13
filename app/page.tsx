@@ -134,15 +134,15 @@ export default function Home() {
             </div>
             <div className="hidden md:flex items-center gap-8">
               {['services', 'team', 'results', 'faq', 'contact'].map((item) => (
-                <button key={item} onClick={() => scrollTo(item)} className="btn text-base text-charcoal hover:text-gold transition-colors tracking-wider uppercase">
+                <button style={{ cursor: "pointer" }} key={item} onClick={() => scrollTo(item)} className="btn text-base text-charcoal hover:text-gold transition-colors tracking-wider uppercase">
                   {item}
                 </button>
               ))}
-              <button onClick={() => scrollTo('contact')} className="btn bg-gold text-navy px-6 py-2.5 text-base tracking-wider uppercase font-bold hover:bg-gold/90 transition-colors rounded">
+              <button style={{ cursor: "pointer" }} onClick={() => scrollTo('contact')} className="btn bg-gold text-navy px-6 py-2.5 text-base tracking-wider uppercase font-bold hover:bg-gold/90 transition-colors rounded">
                 Free Consultation
               </button>
             </div>
-            <button onClick={() => setMenuOpen(!menuOpen)} className="btn md:hidden text-navy" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen}>
+            <button style={{ cursor: "pointer" }} onClick={() => setMenuOpen(!menuOpen)} className="btn md:hidden text-navy" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen}>
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
               </svg>
@@ -151,7 +151,7 @@ export default function Home() {
           {menuOpen && (
             <div className="md:hidden bg-ivory border-t border-rule px-6 py-4 space-y-1">
               {['services', 'team', 'results', 'faq', 'contact'].map((item) => (
-                <button key={item} onClick={() => scrollTo(item)} className="btn block w-full text-left px-4 py-3 text-charcoal hover:text-gold tracking-wider uppercase">
+                <button style={{ cursor: "pointer" }} key={item} onClick={() => scrollTo(item)} className="btn block w-full text-left px-4 py-3 text-charcoal hover:text-gold tracking-wider uppercase">
                   {item}
                 </button>
               ))}
@@ -174,10 +174,10 @@ export default function Home() {
                   Three decades of precision accounting and strategic financial counsel. We transform complex numbers into clear paths forward for businesses and high-net-worth individuals.
                 </p>
                 <div className="flex gap-4">
-                  <button onClick={() => scrollTo('contact')} className="btn bg-navy text-ivory px-8 py-4 text-lg tracking-wider uppercase hover:bg-navy-light transition-colors">
+                  <button style={{ cursor: "pointer" }} onClick={() => scrollTo('contact')} className="btn bg-navy text-ivory px-8 py-4 text-lg tracking-wider uppercase hover:bg-navy-light transition-colors">
                     Free Consultation
                   </button>
-                  <button onClick={() => scrollTo('services')} className="btn border-2 border-navy text-navy px-8 py-4 text-lg tracking-wider uppercase hover:bg-navy hover:text-ivory transition-colors">
+                  <button style={{ cursor: "pointer" }} onClick={() => scrollTo('services')} className="btn border-2 border-navy text-navy px-8 py-4 text-lg tracking-wider uppercase hover:bg-navy hover:text-ivory transition-colors">
                     Our Services
                   </button>
                 </div>
@@ -447,7 +447,7 @@ export default function Home() {
                     <label htmlFor="message" className="block text-sm font-medium mb-2">Tell us about your needs</label>
                     <textarea id="message" rows={4} placeholder="Describe your accounting needs, challenges, or goals..." className="w-full border-2 border-gray-300 px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none resize-none transition-colors border border-gray-300 " />
                   </div>
-                  <button
+                  <button style={{ cursor: "pointer" }}
                     type="submit"
                     disabled={submitted}
                     className="w-full bg-navy text-ivory py-4 text-lg tracking-wider uppercase hover:bg-navy-light transition-colors disabled:opacity-85"
@@ -496,9 +496,9 @@ export default function Home() {
           <div className="border-t border-navy-light pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-slate text-sm">&copy; {new Date().getFullYear()} Whitfield & Associates. All rights reserved.</p>
             <div className="flex gap-6 text-sm text-slate">
-              <button onClick={() => scrollTo('services')} className="btn hover:text-gold transition-colors">Services</button>
-              <button onClick={() => scrollTo('team')} className="btn hover:text-gold transition-colors">Team</button>
-              <button onClick={() => scrollTo('contact')} className="btn hover:text-gold transition-colors">Contact</button>
+              <button style={{ cursor: "pointer" }} onClick={() => scrollTo('services')} className="btn hover:text-gold transition-colors">Services</button>
+              <button style={{ cursor: "pointer" }} onClick={() => scrollTo('team')} className="btn hover:text-gold transition-colors">Team</button>
+              <button style={{ cursor: "pointer" }} onClick={() => scrollTo('contact')} className="btn hover:text-gold transition-colors">Contact</button>
             </div>
           </div>
         </div>
