@@ -134,7 +134,7 @@ export default function Home() {
             </div>
             <div className="hidden md:flex items-center gap-8">
               {['services', 'team', 'results', 'faq', 'contact'].map((item) => (
-                <button key={item} onClick={() => scrollTo(item)} className="text-sm text-charcoal hover:text-gold transition-colors tracking-wider uppercase">
+                <button key={item} onClick={() => scrollTo(item)} className="text-base text-charcoal hover:text-gold transition-colors tracking-wider uppercase">
                   {item}
                 </button>
               ))}
@@ -307,7 +307,7 @@ export default function Home() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {TESTIMONIALS.map((t, i) => (
-                <blockquote key={i} className={`pull-quote transition-opacity duration-500 ${i === activeTestimonial ? 'opacity-100' : 'opacity-70'}`}>
+                <blockquote key={i} className={`pull-quote transition-opacity duration-500 ${i === activeTestimonial ? 'opacity-100' : 'opacity-85'}`}>
                   <p className="text-lg leading-relaxed mb-6 italic">&ldquo;{t.text}&rdquo;</p>
                   <footer>
                     <cite className="not-italic">
@@ -454,7 +454,7 @@ export default function Home() {
                   <button
                     type="submit"
                     disabled={submitted}
-                    className="w-full bg-navy text-ivory py-4 text-lg tracking-wider uppercase hover:bg-navy-light transition-colors disabled:opacity-60"
+                    className="w-full bg-navy text-ivory py-4 text-lg tracking-wider uppercase hover:bg-navy-light transition-colors disabled:opacity-85"
                   >
                     {submitted ? '✓ Thank You — We\'ll Be In Touch' : 'Request Consultation'}
                   </button>
