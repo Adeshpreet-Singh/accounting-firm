@@ -182,18 +182,18 @@ export default function Home() {
                   </button>
                 </div>
               </div>
-              <div className="md:col-span-4 flex flex-col items-end gap-6 text-right">
+              <div className="md:col-span-4 flex flex-col items-end gap-10 text-right">
                 <div className="seal w-28 h-28">
                   <span className="text-gold text-2xl font-bold"><AnimatedCounter target="30+" /></span>
                   <span className="text-slate text-xs tracking-wider uppercase">Years</span>
                 </div>
-                <div>
+                <div className="pt-2">
                   <div className="text-4xl font-bold text-navy"><AnimatedCounter target="$847M" /></div>
-                  <div className="text-sm text-slate tracking-wider uppercase">Tax savings delivered</div>
+                  <div className="text-sm text-slate tracking-wider uppercase mt-2">Tax savings delivered</div>
                 </div>
-                <div>
+                <div className="pt-2">
                   <div className="text-4xl font-bold text-navy"><AnimatedCounter target="2,400+" /></div>
-                  <div className="text-sm text-slate tracking-wider uppercase">Clients served</div>
+                  <div className="text-sm text-slate tracking-wider uppercase mt-2">Clients served</div>
                 </div>
               </div>
             </div>
@@ -208,16 +208,12 @@ export default function Home() {
         {/* Services - Expandable editorial cards */}
         <section id="services" className="reveal py-24" aria-labelledby="services-heading">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="grid md:grid-cols-12 gap-8 mb-16">
-              <div className="md:col-span-4">
-                <p className="text-gold text-sm tracking-[0.3em] uppercase mb-3">What We Do</p>
-                <h2 id="services-heading" className="text-4xl md:text-5xl font-bold">Our<br />Services</h2>
-              </div>
-              <div className="md:col-span-8 flex items-end">
-                <p className="text-slate text-lg leading-relaxed">
-                  From tax optimization to comprehensive audit services, we deliver the financial clarity and compliance your business demands. Click any service to learn more.
-                </p>
-              </div>
+            <div className="mb-16">
+              <p className="text-gold text-sm tracking-[0.3em] uppercase mb-3">What We Do</p>
+              <h2 id="services-heading" className="text-4xl md:text-5xl font-bold mb-4">Our Services</h2>
+              <p className="text-slate text-lg leading-relaxed max-w-2xl">
+                From tax optimization to comprehensive audit services, we deliver the financial clarity and compliance your business demands. Click any service to learn more.
+              </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -424,20 +420,20 @@ export default function Home() {
                   <div className="grid md:grid-cols-2 gap-5">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-2">Full Name</label>
-                      <input id="name" type="text" placeholder="John Smith" required className="w-full border border-rule px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none transition-colors" />
+                      <input id="name" type="text" placeholder="John Smith" required className="w-full border-2 border-gray-300 px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none transition-colors" />
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
-                      <input id="email" type="email" placeholder="john@example.com" required className="w-full border border-rule px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none transition-colors" />
+                      <input id="email" type="email" placeholder="john@example.com" required className="w-full border-2 border-gray-300 px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none transition-colors" />
                     </div>
                   </div>
                   <div>
                     <label htmlFor="company" className="block text-sm font-medium mb-2">Company</label>
-                    <input id="company" type="text" placeholder="Your company name" className="w-full border border-rule px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none transition-colors" />
+                    <input id="company" type="text" placeholder="Your company name" className="w-full border-2 border-gray-300 px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none transition-colors" />
                   </div>
                   <div>
                     <label htmlFor="service" className="block text-sm font-medium mb-2">Service Needed</label>
-                    <select id="service" className="w-full border border-rule px-4 py-3 text-navy bg-ivory focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none transition-colors">
+                    <select id="service" className="w-full border-2 border-gray-300 px-4 py-3 text-navy bg-ivory focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none transition-colors">
                       <option value="">Select a service</option>
                       <option value="tax">Tax Planning & Preparation</option>
                       <option value="audit">Audit & Assurance</option>
@@ -449,7 +445,7 @@ export default function Home() {
                   </div>
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium mb-2">Tell us about your needs</label>
-                    <textarea id="message" rows={4} placeholder="Describe your accounting needs, challenges, or goals..." className="w-full border border-rule px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none resize-none transition-colors" />
+                    <textarea id="message" rows={4} placeholder="Describe your accounting needs, challenges, or goals..." className="w-full border-2 border-gray-300 px-4 py-3 text-navy bg-ivory placeholder:text-slate/50 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none resize-none transition-colors" />
                   </div>
                   <button
                     type="submit"
