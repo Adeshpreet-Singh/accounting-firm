@@ -196,7 +196,7 @@ export default function Home() {
                 </div>
                 <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: 4, color: '#fff' }}>{member.name}</h3>
                 <div className="label-text" style={{ color: 'var(--purple-200)', marginBottom: 8 }}>{member.role}</div>
-                <p style={{ fontSize: '0.85rem', opacity: 0.6 }}>{member.bio}</p>
+                <p style={{ fontSize: '0.85rem', opacity: '0.9' }}>{member.bio}</p>
               </div>
             ))}
           </div>
@@ -343,7 +343,7 @@ export default function Home() {
               <button
                 onClick={() => toggleFaq(i)}
                 style={{
-                  width: '100%', padding: '1.25rem 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                  width: '100%', padding: '1.5rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
                   background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font)', fontSize: '1rem', fontWeight: 600, color: 'var(--heading)', textAlign: 'left',
                 }}
               >
@@ -351,7 +351,7 @@ export default function Home() {
                 <span style={{ fontSize: '1.25rem', color: 'var(--accent)', transition: 'transform 0.3s', transform: openFaq === i ? 'rotate(45deg)' : 'rotate(0)' }}>+</span>
               </button>
               <div className={`faq-answer ${openFaq === i ? 'open' : ''}`}>
-                <div style={{ padding: '0 1.5rem 1.25rem' }}>
+                <div style={{ padding: '0 2rem 1.5rem' }}>
                   <p style={{ fontSize: '0.9rem', lineHeight: 1.6 }}>{faq.a}</p>
                 </div>
               </div>
