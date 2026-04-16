@@ -162,7 +162,7 @@ export default function Home() {
                 img: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=600&q=80',
               },
             ].map((service, i) => (
-              <div key={i} className={`card reveal reveal-delay-${(i % 4) + 1}`}>
+              <div key={i} className={'card reveal reveal-delay-${(i % 4) + 1}'}>
                 <div style={{ aspectRatio: '16/10', overflow: 'hidden', borderRadius: '6px 6px 0 0', marginTop: '-1.5rem', marginLeft: '-1.5rem', marginRight: '-1.5rem', marginBottom: '1.25rem' }}>
                   <img src={service.img} alt={service.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
@@ -350,7 +350,7 @@ export default function Home() {
                 {faq.q}
                 <span style={{ fontSize: '1.25rem', color: 'var(--accent)', transition: 'transform 0.3s', transform: openFaq === i ? 'rotate(45deg)' : 'rotate(0)' }}>+</span>
               </button>
-              <div className={`faq-answer ${openFaq === i ? 'open' : ''}`}>
+              <div className={'faq-answer ${openFaq === i ? 'open' : ''}'}>
                 <div style={{ padding: '0 2rem 1.5rem' }}>
                   <p style={{ fontSize: '0.9rem', lineHeight: 1.6 }}>{faq.a}</p>
                 </div>
