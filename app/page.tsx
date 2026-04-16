@@ -63,7 +63,7 @@ export default function Home() {
             <a href="#services" className="nav-link">Services</a>
             <a href="#team" className="nav-link">Team</a>
             <a href="#results" className="nav-link">Results</a>
-            <a href="#contact" className="btn-primary">Free Consultation</a>
+            <a href="#contact" className="project-btn-primary">Free Consultation</a>
           </div>
         </div>
       </nav>
@@ -80,8 +80,8 @@ export default function Home() {
               Meridian is a modern accounting firm built for ambitious companies. We combine deep financial expertise with cloud-native tools to give you real-time visibility into your business health.
             </p>
             <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-              <a href="#contact" className="btn-primary btn-primary-lg">Start a Conversation</a>
-              <a href="#results" className="btn-ghost btn-ghost-lg">See Our Results</a>
+              <a href="#contact" className="btn-primary project-btn-primary-lg">Start a Conversation</a>
+              <a href="#results" className="btn-ghost project-btn-ghost-lg">See Our Results</a>
             </div>
           </div>
           <div className="reveal reveal-delay-1" style={{ position: 'relative' }}>
@@ -399,7 +399,7 @@ export default function Home() {
                 <option>Full-Service</option>
               </select>
               <textarea rows={4} placeholder="Tell us about your business..." />
-              <button type="submit" className="btn-primary btn-primary-lg" style={{ width: '100%' }}>
+              <button type="submit" className="btn-primary project-btn-primary-lg" style={{ width: '100%' }}>
                 Book Free Consultation
               </button>
               <p style={{ fontSize: '0.8rem', textAlign: 'center', color: 'var(--body)' }}>
