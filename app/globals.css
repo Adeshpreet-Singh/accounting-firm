@@ -1,5 +1,6 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
 
 /* ============================================
    STRIPE DESIGN SYSTEM — Accounting Firm
@@ -521,7 +522,6 @@ input::placeholder, textarea::placeholder {
     display: none;
   }
 }
-
 
 /* ===== FINAL 10/10 POLISH ===== */
 
