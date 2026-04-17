@@ -3,8 +3,29 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Whitfield & Associates | Certified Public Accountants",
-  description: "Premier Chicago accounting firm delivering strategic tax planning, audit services, bookkeeping, and financial advisory for businesses and high-net-worth individuals since 1992.",
-  keywords: "accounting firm, CPA, tax planning, audit, bookkeeping, Chicago accountant",
+  description:
+    "Premier Chicago accounting firm delivering strategic tax planning, audit services, bookkeeping, and financial advisory for businesses and high-net-worth individuals since 1992.",
+  keywords:
+    "accounting firm, CPA, tax planning, audit, bookkeeping, Chicago accountant",
+  openGraph: {
+    title: "Whitfield & Associates | Certified Public Accountants",
+    description:
+      "Premier Chicago accounting firm delivering strategic tax planning, audit services, bookkeeping, and financial advisory for businesses and high-net-worth individuals since 1992.",
+    url: "https://whitfieldcpa.com",
+    siteName: "Whitfield & Associates",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Whitfield & Associates | Certified Public Accountants",
+    description:
+      "Premier Chicago accounting firm delivering strategic tax planning, audit services, bookkeeping, and financial advisory since 1992.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -21,23 +42,45 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "AccountingService",
-              "name": "Whitfield & Associates",
-              "url": "https://whitfieldcpa.com",
-              "telephone": "(312) 555-0187",
-              "address": {
+              name: "Whitfield & Associates",
+              url: "https://whitfieldcpa.com",
+              telephone: "(312) 555-0187",
+              email: "info@whitfieldcpa.com",
+              address: {
                 "@type": "PostalAddress",
-                "streetAddress": "233 S. Wacker Drive, Suite 4200",
-                "addressLocality": "Chicago",
-                "addressRegion": "IL",
-                "postalCode": "60606"
+                streetAddress: "233 S. Wacker Drive, Suite 4200",
+                addressLocality: "Chicago",
+                addressRegion: "IL",
+                postalCode: "60606",
               },
-              "priceRange": "$$$"
-            })
+              openingHoursSpecification: [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                  opens: "08:00",
+                  closes: "18:00",
+                },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: "Saturday",
+                  opens: "09:00",
+                  closes: "13:00",
+                },
+              ],
+              priceRange: "$$$",
+              sameAs: [
+                "https://www.linkedin.com/company/whitfield-associates",
+                "https://www.facebook.com/whitfieldassociates",
+              ],
+            }),
           }}
         />
       </head>
-      <body className="antialiased">{children}
-        <script dangerouslySetInnerHTML={{ __html: `
+      <body className="antialiased">
+        {children}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           if (typeof window !== 'undefined') {
             const obs = new IntersectionObserver((entries) => {
               entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -50,7 +93,9 @@ export default function RootLayout({
             });
             mo.observe(document.body, { childList: true, subtree: true });
           }
-        ` }} />
+        `,
+          }}
+        />
       </body>
     </html>
   );
