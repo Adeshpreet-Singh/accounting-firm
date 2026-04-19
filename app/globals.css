@@ -527,10 +527,7 @@ input::placeholder, textarea::placeholder {
 
 /* CONTRAST FIX - ensure ALL body text meets WCAG AAA (7:1 ratio) */
 body { -webkit-font-smoothing: antialiased; }
-p, li, span:not(.badge):not(.btn):not(.btn-primary):not(.btn-outline), td, label, dd, a {
-  color: inherit;
-  line-height: 1.75;
-}
+p { color: var(--body); line-height: 1.75; }
 
 /* FORCE readable text on ALL backgrounds */
 section p, section li, section span {
@@ -545,11 +542,10 @@ nav button, nav a, nav li {
 }
 
 /* CARDS - consistent, polished */
-.card, [class*="-card"] {
-  backdrop-filter: blur(12px);
+.card {
   transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.card:hover, [class*="-card"]:hover {
+.card:hover {
   transform: translateY(-6px);
 }
 
@@ -563,11 +559,11 @@ input, textarea, select {
 }
 
 /* BUTTONS - polished */
-button, .btn, [class*="btn-"] {
+button, .btn-primary, .btn-ghost {
   cursor: pointer;
   transition: all 0.25s ease;
 }
-button:hover, .btn:hover, [class*="btn-"]:hover {
+button:hover, .btn-primary:hover, .btn-ghost:hover {
   transform: translateY(-2px);
   filter: brightness(1.1);
 }
@@ -591,10 +587,7 @@ section {
 }
 
 /* MINIMUM FONT SIZE - nothing below 14px */
-* { font-size: max(14px, inherit); }
-h1 { font-size: max(2.5rem, inherit); }
-h2 { font-size: max(2rem, inherit); }
-h3 { font-size: max(1.25rem, inherit); }
+small, .text-xs, .text-sm { font-size: max(14px, inherit); }
 
 /* FOCUS STATES */
 *:focus-visible {
@@ -626,7 +619,7 @@ button { cursor: pointer; }
 
 .hover-lift:hover {
   transform: translateY(-6px);
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .hover-zoom {
@@ -649,78 +642,42 @@ button { cursor: pointer; }
   box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
 }
 
-/* Form styles */
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-label {
-  display: block;
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-}
-
-.form-input {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  font-size: 0.9375rem;
-  border: 2px solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  transition: var(--transition);
-}
-
-.form-input:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
-
-.form-input::placeholder {
-  color: var(--text-muted);
-}
-
-.form-textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-.form-select {
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.75rem center;
-  background-repeat: no-repeat;
-  background-size: 1.5em 1.5em;
-  padding-right: 2.5rem;
-}
+/* Form utility classes — not used, Tailwind handles forms */
 
 /* Section styles */
-.section {
-  padding: 5rem 1rem;
+/* Section and container styles — use Tailwind classes instead */
+
+
+/* Typography hierarchy — managed by base section */
+
+/* Contrast — handled by :root CSS variables */
+
+/* Section spacing — only apply padding to bare section elements */
+section {
+  padding-top: clamp(3rem, 8vw, 6rem);
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
 }
 
-.section-lg {
-  padding: 7rem 1rem;
+
+/* Nav / header layout is handled in page.tsx via Tailwind — no broad overrides */
+
+/* Buttons */
+button, .btn-primary, .btn-ghost {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
 }
 
-.section-sm {
-  padding: 3rem 1rem;
-}
+/* Grid gaps */
+.grid { gap: clamp(1rem, 3vw, 2rem); }
 
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
+/* Forms — handled by element selectors in FORMS section above */
 
-.container-sm {
-  max-width: 640px;
-}
-
-.container-lg {
-  max-width: 1400px;
+/* Responsive */
+@media (max-width: 768px) {
+  section { padding-top: 2rem; padding-bottom: 2rem; }
 }
