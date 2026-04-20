@@ -36,6 +36,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -89,7 +91,7 @@ export default function RootLayout({
               document.querySelectorAll('.prg-reveal,.reveal-left,.reveal-scale').forEach(el => obs.observe(el));
             });
             const mo = new MutationObserver(() => {
-              document.querySelectorAll('.reveal:not(.visible),.reveal-left:not(.visible),.reveal-scale:not(.visible)').forEach(el => obs.observe(el));
+              document.querySelectorAll('.prg-reveal:not(.visible),.reveal-left:not(.visible),.reveal-scale:not(.visible)').forEach(el => obs.observe(el));
             });
             mo.observe(document.body, { childList: true, subtree: true });
           }

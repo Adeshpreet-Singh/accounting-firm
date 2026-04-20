@@ -5,19 +5,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        ivory: '#faf9f6',
-        parchment: '#f5f0e8',
+        ivory: '#faf8f3',
         navy: {
-          DEFAULT: '#0f1729',
+          DEFAULT: '#0b1120',
+          mid: '#142038',
           light: '#1e3048',
         },
         gold: {
-          DEFAULT: '#b8941f',
-          muted: '#b8941f33',
+          DEFAULT: '#c9a84c',
+          light: '#dfc477',
         },
-        charcoal: '#1a1a1a',
-        slate: '#475569',
-        rule: '#c8d0db',
+        slate: '#6b7a8d',
+        charcoal: '#1a1a2e',
       },
     },
   },
