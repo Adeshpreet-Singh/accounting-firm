@@ -232,7 +232,7 @@ export default function Home() {
           <div className="geo-dot absolute bottom-20 left-[12%]" />
 
           <div className=" section-container">
-            <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-end">
+            <div className="grid lg:grid-cols-1 gap-62 gap-12 lg:gap-8 items-end">
               <div className="lg:col-span-7">
                 <div className="prg-reveal">
                   <span className="hero-badge mb-8 inline-block">
@@ -301,7 +301,7 @@ export default function Home() {
         {/* ══════ SERVICES ══════ */}
         <section id="services" className="py-20 md:py-28" aria-labelledby="services-heading">
           <div className=" section-container">
-            <div className="grid lg:grid-cols-12 gap-8 mb-16">
+            <div className="grid lg:grid-cols-1 gap-62 gap-8 mb-16">
               <div className="lg:col-span-5">
                 <p className="text-[color:var(--gold)] text-xs font-semibold tracking-[0.25em] uppercase mb-4 prg-reveal">What We Do</p>
                 <h2 id="services-heading" className="text-[clamp(2rem,3.5vw,3.25rem)] font-bold prg-reveal reveal-delay-1">
@@ -317,7 +317,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 gap-6 lg:grid-cols-3 gap-6">
               {SERVICES.map((svc, i) => (
                 <article
                   key={i}
@@ -361,7 +361,7 @@ export default function Home() {
         {/* ══════ PROCESS / TIMELINE ══════ */}
         <section id="process" className="py-20 md:py-28 bg-[color:var(--ivory-warm)]" aria-labelledby="process-heading">
           <div className=" section-container">
-            <div className="grid lg:grid-cols-12 gap-12">
+            <div className="grid lg:grid-cols-1 gap-62 gap-12">
               <div className="lg:col-span-5">
                 <p className="text-[color:var(--gold)] text-xs font-semibold tracking-[0.25em] uppercase mb-4 prg-reveal">Our Approach</p>
                 <h2 id="process-heading" className="text-[clamp(2rem,3.5vw,3.25rem)] font-bold mb-6 prg-reveal reveal-delay-1">
@@ -390,7 +390,7 @@ export default function Home() {
         {/* ══════ STATS BAR ══════ */}
         <section className="py-12 bg-[color:var(--navy)]" aria-label="Key statistics">
           <div className=" section-container">
-            <div className="grid grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
               <div className="stat-block prg-reveal">
                 <div className="stat-value"><AnimatedCounter target={847} prefix="$" suffix="M" /></div>
                 <div className="stat-label">Tax Savings</div>
@@ -414,7 +414,7 @@ export default function Home() {
         {/* ══════ TEAM ══════ */}
         <section id="team" className="py-20 md:py-28" aria-labelledby="team-heading">
           <div className=" section-container">
-            <div className="grid lg:grid-cols-12 gap-8 mb-16">
+            <div className="grid lg:grid-cols-1 gap-62 gap-8 mb-16">
               <div className="lg:col-span-5">
                 <p className="text-[color:var(--gold)] text-xs font-semibold tracking-[0.25em] uppercase mb-4 prg-reveal">Our Team</p>
                 <h2 id="team-heading" className="text-[clamp(2rem,3.5vw,3.25rem)] font-bold prg-reveal reveal-delay-1">
@@ -430,7 +430,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 gap-6 lg:grid-cols-4 gap-6">
               {TEAM.map((member, i) => (
                 <div key={i} className={`team-card bg-[color:var(--navy)] p-6 prg-reveal reveal-delay-${i + 1}`}>
                   <div className="w-full aspect-square bg-[color:var(--navy-mid)] mb-6 flex items-center justify-center">
@@ -481,7 +481,7 @@ export default function Home() {
             </div>
 
             {/* Awards */}
-            <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 section-container">
+            <div className="mt-20 grid grid-cols-2 gap-6 md:grid-cols-4 gap-4 section-container">
               {[
                 { label: 'AICPA Member', sub: 'Peer Reviewed' },
                 { label: 'Top 100 Firms', sub: 'Accounting Today' },
@@ -500,7 +500,7 @@ export default function Home() {
         {/* ══════ CONTACT ══════ */}
         <section id="contact" className="py-20 md:py-28" aria-labelledby="contact-heading">
           <div className=" section-container">
-            <div className="grid lg:grid-cols-12 gap-12">
+            <div className="grid lg:grid-cols-1 gap-62 gap-12">
               <div className="lg:col-span-5">
                 <p className="text-[color:var(--gold)] text-xs font-semibold tracking-[0.25em] uppercase mb-4 prg-reveal">Get In Touch</p>
                 <h2 id="contact-heading" className="text-[clamp(2rem,3.5vw,3.25rem)] font-bold mb-6 prg-reveal reveal-delay-1">
@@ -615,7 +615,7 @@ export default function Home() {
               </div>
               <div className="text-slate text-xs tracking-wider mt-1">Certified Public Accountants</div>
             </div>
-            <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-sm">
+            <div className="flex flex-wrap gap-4 justify-center gap-4 md:gap-6 text-sm">
               <a href="https://maps.google.com/?q=233+S+Wacker+Drive+Suite+4200+Chicago+IL+60606" target="_blank" rel="noopener noreferrer" className="footer-link">
                 233 S. Wacker Drive, Chicago
               </a>
@@ -637,7 +637,7 @@ export default function Home() {
           </div>
           <div className="mt-10 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
             <span>&copy; 2026 Whitfield &amp; Associates LLP. All rights reserved.</span>
-            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+            <div className="flex flex-wrap gap-4 justify-center gap-4 md:gap-6">
               <span className="footer-link py-1">Privacy Policy</span>
               <span className="footer-link py-1">Terms of Service</span>
               <span className="footer-link py-1">IRS Circular 230 Disclosure</span>
