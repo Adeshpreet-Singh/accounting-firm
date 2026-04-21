@@ -160,7 +160,7 @@ export default function Home() {
         aria-label="Main navigation"
         className={`nav-fixed ${navSolid ? 'nav-solid' : 'nav-transparent'}`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-10 py-5 flex justify-between items-center">
+        <div className=" section-container">
           <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex flex-col group">
             <span className="text-lg tracking-[0.18em] uppercase font-bold text-navy font-[family-name:var(--font-display)]">
               Whitfield <span className="text-[color:var(--gold)]">&amp;</span> Associates
@@ -231,7 +231,7 @@ export default function Home() {
           <div className="geo-dot absolute top-48 right-[25%]" />
           <div className="geo-dot absolute bottom-20 left-[12%]" />
 
-          <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className=" section-container">
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-end">
               <div className="lg:col-span-7">
                 <div className="prg-reveal">
@@ -294,13 +294,13 @@ export default function Home() {
         </section>
 
         {/* ══════ DIVIDER ══════ */}
-        <div className="ornament-divider max-w-7xl mx-auto px-6 md:px-10">
+        <div className="ornament-divider section-container">
           <span className="ornament-icon">&#x2696;</span>
         </div>
 
         {/* ══════ SERVICES ══════ */}
         <section id="services" className="py-20 md:py-28" aria-labelledby="services-heading">
-          <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className=" section-container">
             <div className="grid lg:grid-cols-12 gap-8 mb-16">
               <div className="lg:col-span-5">
                 <p className="text-[color:var(--gold)] text-xs font-semibold tracking-[0.25em] uppercase mb-4 prg-reveal">What We Do</p>
@@ -360,7 +360,7 @@ export default function Home() {
 
         {/* ══════ PROCESS / TIMELINE ══════ */}
         <section id="process" className="py-20 md:py-28 bg-[color:var(--ivory-warm)]" aria-labelledby="process-heading">
-          <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className=" section-container">
             <div className="grid lg:grid-cols-12 gap-12">
               <div className="lg:col-span-5">
                 <p className="text-[color:var(--gold)] text-xs font-semibold tracking-[0.25em] uppercase mb-4 prg-reveal">Our Approach</p>
@@ -389,7 +389,7 @@ export default function Home() {
 
         {/* ══════ STATS BAR ══════ */}
         <section className="py-12 bg-[color:var(--navy)]" aria-label="Key statistics">
-          <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className=" section-container">
             <div className="grid grid-cols-2 lg:grid-cols-4">
               <div className="stat-block prg-reveal">
                 <div className="stat-value"><AnimatedCounter target={847} prefix="$" suffix="M" /></div>
@@ -413,7 +413,7 @@ export default function Home() {
 
         {/* ══════ TEAM ══════ */}
         <section id="team" className="py-20 md:py-28" aria-labelledby="team-heading">
-          <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className=" section-container">
             <div className="grid lg:grid-cols-12 gap-8 mb-16">
               <div className="lg:col-span-5">
                 <p className="text-[color:var(--gold)] text-xs font-semibold tracking-[0.25em] uppercase mb-4 prg-reveal">Our Team</p>
@@ -453,7 +453,7 @@ export default function Home() {
 
         {/* ══════ TESTIMONIALS ══════ */}
         <section id="results" className="py-20 md:py-28 bg-[color:var(--ivory-warm)]" aria-labelledby="results-heading">
-          <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className=" section-container">
             <div className="text-center mb-16">
               <p className="text-[color:var(--gold)] text-xs font-semibold tracking-[0.25em] uppercase mb-4 prg-reveal">Client Voices</p>
               <h2 id="results-heading" className="text-[clamp(2rem,3.5vw,3.25rem)] font-bold prg-reveal reveal-delay-1">
@@ -461,7 +461,7 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto px-6">
+            <div className="grid md:grid-cols-2 gap-8 section-container">
               {TESTIMONIALS.map((t, i) => (
                 <div key={i} className={`testimonial-card prg-reveal reveal-delay-${i + 1}`}>
                   <p className="text-lg leading-relaxed mb-8 text-[#3d4a5c] relative z-10">&ldquo;{t.text}&rdquo;</p>
@@ -481,7 +481,7 @@ export default function Home() {
             </div>
 
             {/* Awards */}
-            <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto px-6">
+            <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 section-container">
               {[
                 { label: 'AICPA Member', sub: 'Peer Reviewed' },
                 { label: 'Top 100 Firms', sub: 'Accounting Today' },
@@ -499,7 +499,7 @@ export default function Home() {
 
         {/* ══════ CONTACT ══════ */}
         <section id="contact" className="py-20 md:py-28" aria-labelledby="contact-heading">
-          <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className=" section-container">
             <div className="grid lg:grid-cols-12 gap-12">
               <div className="lg:col-span-5">
                 <p className="text-[color:var(--gold)] text-xs font-semibold tracking-[0.25em] uppercase mb-4 prg-reveal">Get In Touch</p>
@@ -585,7 +585,7 @@ export default function Home() {
         <section className="py-20 md:py-28 bg-[color:var(--navy)] text-center relative overflow-hidden">
           <div className="geo-circle absolute w-[400px] h-[400px] top-[-100px] left-[-100px]" style={{ opacity: 0.05 }} />
           <div className="geo-circle absolute w-[250px] h-[250px] bottom-[-50px] right-[-50px]" style={{ opacity: 0.05 }} />
-          <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
+          <div className=" section-container">
             <p className="text-[color:var(--gold)] text-xs font-semibold tracking-[0.25em] uppercase mb-6 prg-reveal">Ready?</p>
             <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-bold text-white mb-6 prg-reveal reveal-delay-1 font-[family-name:var(--font-display)]">
               Let us build your financial <span className="italic text-[color:var(--gold)]">future.</span>
@@ -607,7 +607,7 @@ export default function Home() {
 
       {/* ══════ FOOTER ══════ */}
       <footer className="footer-luxury py-14 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <div className=" section-container">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
               <div className="text-lg tracking-[0.15em] uppercase font-bold text-white font-[family-name:var(--font-display)]">
