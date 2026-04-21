@@ -461,7 +461,7 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto px-6">
               {TESTIMONIALS.map((t, i) => (
                 <div key={i} className={`testimonial-card prg-reveal reveal-delay-${i + 1}`}>
                   <p className="text-lg leading-relaxed mb-8 text-[#3d4a5c] relative z-10">&ldquo;{t.text}&rdquo;</p>
@@ -481,7 +481,7 @@ export default function Home() {
             </div>
 
             {/* Awards */}
-            <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto">
+            <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto px-6">
               {[
                 { label: 'AICPA Member', sub: 'Peer Reviewed' },
                 { label: 'Top 100 Firms', sub: 'Accounting Today' },
