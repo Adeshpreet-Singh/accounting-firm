@@ -461,7 +461,7 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto">
               {TESTIMONIALS.map((t, i) => (
                 <div key={i} className={`testimonial-card prg-reveal reveal-delay-${i + 1}`}>
                   <p className="text-lg leading-relaxed mb-8 text-[#3d4a5c] relative z-10">&ldquo;{t.text}&rdquo;</p>
@@ -481,7 +481,7 @@ export default function Home() {
             </div>
 
             {/* Awards */}
-            <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto">
               {[
                 { label: 'AICPA Member', sub: 'Peer Reviewed' },
                 { label: 'Top 100 Firms', sub: 'Accounting Today' },
@@ -585,7 +585,7 @@ export default function Home() {
         <section className="py-20 md:py-28 bg-[color:var(--navy)] text-center relative overflow-hidden">
           <div className="geo-circle absolute w-[400px] h-[400px] top-[-100px] left-[-100px]" style={{ opacity: 0.05 }} />
           <div className="geo-circle absolute w-[250px] h-[250px] bottom-[-50px] right-[-50px]" style={{ opacity: 0.05 }} />
-          <div className="max-w-4xl mx-auto px-6 md:px-10 relative z-10">
+          <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
             <p className="text-[color:var(--gold)] text-xs font-semibold tracking-[0.25em] uppercase mb-6 prg-reveal">Ready?</p>
             <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-bold text-white mb-6 prg-reveal reveal-delay-1 font-[family-name:var(--font-display)]">
               Let us build your financial <span className="italic text-[color:var(--gold)]">future.</span>
