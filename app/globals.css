@@ -1,9 +1,23 @@
+:root {
+  --font-heading: "Inter", serif;
+  --font-body: "Inter", sans-serif;
+  --bg-canvas: #f8f9fa;
+  --bg-panel: #ffffff;
+  --bg-elevated: #f8f9fa;
+  --text-primary: #1a1a2e;
+  --text-secondary: #6c757d;
+  --text-tertiary: #6c757d;
+  --accent-brand: #c9a227;
+  --accent-interactive: #2d5a87;
+  --surface-translucent: rgba(255,255,255,0.08);
+  --surface-translucent-hover: rgba(255,255,255,0.12);
+  --surface-translucent-active: rgba(255,255,255,0.16);
+  --border-default: rgba(0,0,0,0.1);
+  --border-subtle: rgba(0,0,0,0.05);
+  --border-hover: rgba(0,0,0,0.2);
+}
 /* FONTS_INJECTED */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-:root {
-  --font-heading: 'Inter', serif;
-  --font-body: 'Inter', sans-serif;
-}
 h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
 body { font-family: var(--font-body); }
 
@@ -14,16 +28,6 @@ body { font-family: var(--font-body); }
 /* ============================================
    LUXURY EDITORIAL — Accounting Firm Redesign
    ============================================ */
-
-:root {
-  --primary: #1e3a5f;
-  --secondary: #2d5a87;
-  --accent: #c9a227;
-  --bg: #f8f9fa;
-  --surface: #ffffff;
-  --text: #1a1a2e;
-  --muted: #6c757d;
-}
 
 /* ============================================
    RESET & BASE

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Whitfield & Associates | Certified Public Accountants",
     description:
       "Premier Chicago accounting firm delivering strategic tax planning, audit services, bookkeeping, and financial advisory for businesses and high-net-worth individuals since 1992.",
-    url: "https://whitfieldcpa.com",
+    url: "[WEBSITE]",
     siteName: "Whitfield & Associates",
     locale: "en_US",
     type: "website",
@@ -51,9 +51,9 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "AccountingService",
               name: "Whitfield & Associates",
-              url: "https://whitfieldcpa.com",
-              telephone: "(312) 555-0187",
-              email: "info@whitfieldcpa.com",
+              url: "[WEBSITE]",
+              telephone: "[PHONE]",
+              email: "[EMAIL]",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "233 S. Wacker Drive, Suite 4200",
@@ -77,8 +77,8 @@ export default function RootLayout({
               ],
               priceRange: "$$$",
               sameAs: [
-                "https://www.linkedin.com/company/whitfield-associates",
-                "https://www.facebook.com/whitfieldassociates",
+                "[LINKEDIN_URL]/whitfield-associates",
+                "[FACEBOOK_URL]",
               ],
             }),
           }}

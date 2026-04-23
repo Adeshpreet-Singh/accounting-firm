@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://accountingfirm.com.com/sitemap.xml
