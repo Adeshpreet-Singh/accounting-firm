@@ -514,8 +514,8 @@ export default function Home() {
  <div className="space-y-6 prg-reveal reveal-delay-3">
  {[
  { icon: '\u{1F4CD}', label: 'Office', value: '233 S. Wacker Drive, Suite 4200\nChicago, IL 60606', href: '[GOOGLE_MAPS_URL]' },
- { icon: '\u{1F4DE}', label: 'Phone', value: '[PHONE]', href: 'tel:[PHONE]' },
- { icon: '\u2709', label: 'Email', value: '[EMAIL]', href: 'mailto:[EMAIL]' },
+ { icon: '\u{1F4DE}', label: 'Phone', value: '+91 98765 43210', href: 'tel:+91 98765 43210' },
+ { icon: '\u2709', label: 'Email', value: 'contact@example.com', href: 'mailto:contact@example.com' },
  ].map((item, i) => (
  <div key={i} className="flex items-start gap-4">
  <span className="text-lg mt-0.5 opacity-60">{item.icon}</span>
@@ -567,7 +567,7 @@ export default function Home() {
  )}
  {formStatus === 'error' && (
  <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 text-center text-sm">
- Something went wrong. Please try again or call us directly at [PHONE].
+ Something went wrong. Please try again or call us directly at +91 98765 43210.
  </div>
  )}
 
@@ -594,10 +594,10 @@ export default function Home() {
  Contact us today to discuss your goals and receive a complimentary consultation.
  </p>
  <div className="flex gap-4 justify-center flex-wrap prg-reveal reveal-delay-3">
- <a href="mailto:[EMAIL]" className="btn-gold">
+ <a href="mailto:contact@example.com" className="btn-gold">
  Get Free Quote <ArrowRight />
  </a>
- <a href="tel:[PHONE]" className="btn-luxury-outline border-white/30 text-white hover:bg-white hover:text-navy">
+ <a href="tel:+91 98765 43210" className="btn-luxury-outline border-white/30 text-white hover:bg-white hover:text-navy">
  Schedule a Call
  </a>
  </div>
@@ -619,8 +619,8 @@ export default function Home() {
  <a href="[GOOGLE_MAPS_URL]" target="_blank" rel="noopener noreferrer" className="footer-link">
  233 S. Wacker Drive, Chicago
  </a>
- <a href="tel:[PHONE]" className="footer-link">[PHONE]</a>
- <a href="mailto:[EMAIL]" className="footer-link">[EMAIL]</a>
+ <a href="tel:+91 98765 43210" className="footer-link">+91 98765 43210</a>
+ <a href="mailto:contact@example.com" className="footer-link">contact@example.com</a>
  </div>
  </div>
  <div className="flex justify-center gap-6 mt-8">

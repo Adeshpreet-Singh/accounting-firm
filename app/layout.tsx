@@ -52,8 +52,8 @@ export default function RootLayout({
               "@type": "AccountingService",
               name: "Whitfield & Associates",
               url: "[WEBSITE]",
-              telephone: "[PHONE]",
-              email: "[EMAIL]",
+              telephone: "+91 98765 43210",
+              email: "contact@example.com",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "233 S. Wacker Drive, Suite 4200",
