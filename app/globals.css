@@ -1,3 +1,12 @@
+/* FONTS_INJECTED */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+:root {
+  --font-heading: 'Inter', serif;
+  --font-body: 'Inter', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
+body { font-family: var(--font-body); }
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @import "tailwindcss";
@@ -7,28 +16,13 @@
    ============================================ */
 
 :root {
-  /* Core Palette */
-  --navy: #0b1120;
-  --navy-mid: #142038;
-  --navy-light: #1e3048;
-  --gold: #c9a84c;
-  --gold-light: #dfc477;
-  --gold-dim: rgba(201, 168, 76, 0.15);
-  --ivory: #faf8f3;
-  --ivory-warm: #f3efe6;
-  --parchment: #ede8dc;
-  --slate: #6b7a8d;
-  --charcoal: #1a1a2e;
-  --white: #ffffff;
-
-  /* Shadows */
-  --shadow-elevated: 0 20px 60px rgba(11, 17, 32, 0.12), 0 8px 24px rgba(11, 17, 32, 0.08);
-  --shadow-subtle: 0 4px 20px rgba(11, 17, 32, 0.06);
-  --shadow-gold: 0 4px 30px rgba(201, 168, 76, 0.2);
-
-  /* Typography */
-  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --primary: #1e3a5f;
+  --secondary: #2d5a87;
+  --accent: #c9a227;
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --text: #1a1a2e;
+  --muted: #6c757d;
 }
 
 /* ============================================
@@ -95,8 +89,8 @@ p {
 }
 
 .reveal-left {
-  opacity: 0;
-  transform: translateX(-40px);
+  opacity: 1;
+  transform: translateX(0);
   transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -789,3 +783,13 @@ section, .section { margin-bottom: 0; }
 .vt-md { margin-top: 2.5rem; margin-bottom: 2.5rem; }
 .vt-lg { margin-top: 4rem; margin-bottom: 4rem; }
 .vt-xl { margin-top: 5rem; margin-bottom: 5rem; }
+/* DESIGN_SYSTEM_INJECTED */
+body {
+  background-color: #f8f9fa;
+  color: #1a1a2e;
+}
+.bg-primary { background-color: #1e3a5f !important; }
+.bg-secondary { background-color: #2d5a87 !important; }
+.text-primary { color: #1e3a5f !important; }
+.text-accent { color: #c9a227 !important; }
+.bg-accent { background-color: #c9a227 !important; }
