@@ -232,7 +232,7 @@ export default function Home() {
  <div className="geo-dot absolute bottom-20 left-[12%]" />
 
  <div className=" section-container">
- <div className="grid lg:grid-cols-1 gap-62 gap-12 lg:gap-8 items-end">
+ <div className="grid lg:grid-cols-1 gap-60 gap-12 lg:gap-8 items-end">
  <div className="lg:col-span-7">
  <div className="prg-reveal">
  <span className="hero-badge mb-8 inline-block">
@@ -301,7 +301,7 @@ export default function Home() {
  {/* SERVICES */}
  <section id="services" className="py-20 md:py-28" aria-labelledby="services-heading">
  <div className=" section-container">
- <div className="grid lg:grid-cols-1 gap-62 gap-8 mb-16">
+ <div className="grid lg:grid-cols-1 gap-60 gap-8 mb-16">
  <div className="lg:col-span-5">
  <p className="text-[color:var(--gold)] text-xs font-semibold tracking-[0.25em] uppercase mb-4 prg-reveal">What We Do</p>
  <h2 id="services-heading" className="text-[clamp(2rem,3.5vw,3.25rem)] font-bold prg-reveal reveal-delay-1">
@@ -361,7 +361,7 @@ export default function Home() {
  {/* PROCESS / TIMELINE */}
  <section id="process" className="py-20 md:py-28 bg-[color:var(--ivory-warm)]" aria-labelledby="process-heading">
  <div className=" section-container">
- <div className="grid lg:grid-cols-1 gap-62 gap-12">
+ <div className="grid lg:grid-cols-1 gap-60 gap-12">
  <div className="lg:col-span-5">
  <p className="text-[color:var(--gold)] text-xs font-semibold tracking-[0.25em] uppercase mb-4 prg-reveal">Our Approach</p>
  <h2 id="process-heading" className="text-[clamp(2rem,3.5vw,3.25rem)] font-bold mb-6 prg-reveal reveal-delay-1">
@@ -414,7 +414,7 @@ export default function Home() {
  {/* TEAM */}
  <section id="team" className="py-20 md:py-28" aria-labelledby="team-heading">
  <div className=" section-container">
- <div className="grid lg:grid-cols-1 gap-62 gap-8 mb-16">
+ <div className="grid lg:grid-cols-1 gap-60 gap-8 mb-16">
  <div className="lg:col-span-5">
  <p className="text-[color:var(--gold)] text-xs font-semibold tracking-[0.25em] uppercase mb-4 prg-reveal">Our Team</p>
  <h2 id="team-heading" className="text-[clamp(2rem,3.5vw,3.25rem)] font-bold prg-reveal reveal-delay-1">
@@ -500,7 +500,7 @@ export default function Home() {
  {/* CONTACT */}
  <section id="contact" className="py-20 md:py-28" aria-labelledby="contact-heading">
  <div className=" section-container">
- <div className="grid lg:grid-cols-1 gap-62 gap-12">
+ <div className="grid lg:grid-cols-1 gap-60 gap-12">
  <div className="lg:col-span-5">
  <p className="text-[color:var(--gold)] text-xs font-semibold tracking-[0.25em] uppercase mb-4 prg-reveal">Get In Touch</p>
  <h2 id="contact-heading" className="text-[clamp(2rem,3.5vw,3.25rem)] font-bold mb-6 prg-reveal reveal-delay-1">
