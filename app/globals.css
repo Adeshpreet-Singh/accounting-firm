@@ -799,13 +799,4 @@ section, .section { margin-bottom: 0; }
 .vt-md { margin-top: 2.5rem; margin-bottom: 2.5rem; }
 .vt-lg { margin-top: 4rem; margin-bottom: 4rem; }
 .vt-xl { margin-top: 5rem; margin-bottom: 5rem; }
-/* DESIGN_SYSTEM_INJECTED */
-body {
-  background-color: #f8f9fa;
-  color: #1a1a2e;
-}
-.bg-primary { background-color: #1e3a5f !important; }
-.bg-secondary { background-color: #2d5a87 !important; }
-.text-primary { color: #1e3a5f !important; }
-.text-accent { color: #c9a227 !important; }
-.bg-accent { background-color: #c9a227 !important; }
+

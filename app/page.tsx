@@ -163,10 +163,10 @@ export default function Home() {
  <div className=" section-container">
  <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex flex-col group">
  <span className="text-lg tracking-[0.18em] uppercase font-bold text-navy font-[family-name:var(--font-display)]">
- Whitfield <span className="text-[color:var(--gold)]">&amp;</span> Associates
+ Whitfield <span className="text-[color:var(--gold)]">&</span> Associates
  </span>
  <span className="text-[10px] tracking-[0.25em] text-slate uppercase">
- Certified Public Accountants &mdash; Est. 1992
+ Certified Public Accountants — Est. 1992
  </span>
  </button>
 
@@ -464,7 +464,7 @@ export default function Home() {
  <div className="grid md:grid-cols-2 gap-8 section-container">
  {TESTIMONIALS.map((t, i) => (
  <div key={i} className={`testimonial-card prg-reveal reveal-delay-${i + 1}`}>
- <p className="text-lg leading-relaxed mb-8 text-[#3d4a5c] relative z-10">&ldquo;{t.text}&rdquo;</p>
+ <p className="text-lg leading-relaxed mb-8 text-[#3d4a5c] relative z-10">"{t.text}"</p>
  <footer className="flex items-center gap-4">
  <div className="w-10 h-10 rounded-full bg-[color:var(--navy)] flex items-center justify-center">
  <span className="text-[color:var(--gold)] text-xs font-bold">
@@ -514,7 +514,7 @@ export default function Home() {
  <div className="space-y-6 prg-reveal reveal-delay-3">
  {[
  { icon: '\u{1F4CD}', label: 'Office', value: '233 S. Wacker Drive, Suite 4200\nChicago, IL 60606', href: '[GOOGLE_MAPS_URL]' },
- { icon: '\u{1F4DE}', label: 'Phone', value: '+91 98765 43210', href: 'tel:+91 98765 43210' },
+ { icon: '\u{1F4DE}', label: 'Phone', value: '+1-212-555-0420', href: 'tel:+1-212-555-0420' },
  { icon: '\u2709', label: 'Email', value: 'contact@example.com', href: 'mailto:contact@example.com' },
  ].map((item, i) => (
  <div key={i} className="flex items-start gap-4">
@@ -532,7 +532,7 @@ export default function Home() {
 
  <div className="lg:col-span-6 lg:col-start-7">
  <form className="bg-white border border-[rgba(11,17,32,0.06)] p-8 md:p-10 space-y-5 prg-reveal" onSubmit={handleFormSubmit}>
- <input type="hidden" name="access_key" value="[WEB3FORMS_KEY]" />
+ <input type="hidden" name="access_key" value="00000000-0000-0000-0000-000000000000" />
  <input type="hidden" name="subject" value="New Consultation Request - Whitfield & Associates" />
  <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
 
@@ -567,7 +567,7 @@ export default function Home() {
  )}
  {formStatus === 'error' && (
  <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 text-center text-sm">
- Something went wrong. Please try again or call us directly at +91 98765 43210.
+ Something went wrong. Please try again or call us directly at +1-212-555-0420.
  </div>
  )}
 
@@ -597,7 +597,7 @@ export default function Home() {
  <a href="mailto:contact@example.com" className="btn-gold">
  Get Free Quote <ArrowRight />
  </a>
- <a href="tel:+91 98765 43210" className="btn-luxury-outline border-white/30 text-white hover:bg-white hover:text-navy">
+ <a href="tel:+1-212-555-0420" className="btn-luxury-outline border-white/30 text-white hover:bg-white hover:text-navy">
  Schedule a Call
  </a>
  </div>
@@ -611,7 +611,7 @@ export default function Home() {
  <div className="flex flex-col md:flex-row justify-between items-center gap-6">
  <div>
  <div className="text-lg tracking-[0.15em] uppercase font-bold text-white font-[family-name:var(--font-display)]">
- Whitfield <span className="text-[color:var(--gold)]">&amp;</span> Associates
+ Whitfield <span className="text-[color:var(--gold)]">&</span> Associates
  </div>
  <div className="text-slate text-xs tracking-wider mt-1">Certified Public Accountants</div>
  </div>
@@ -619,7 +619,7 @@ export default function Home() {
  <a href="[GOOGLE_MAPS_URL]" target="_blank" rel="noopener noreferrer" className="footer-link">
  233 S. Wacker Drive, Chicago
  </a>
- <a href="tel:+91 98765 43210" className="footer-link">+91 98765 43210</a>
+ <a href="tel:+1-212-555-0420" className="footer-link">+1-212-555-0420</a>
  <a href="mailto:contact@example.com" className="footer-link">contact@example.com</a>
  </div>
  </div>
@@ -636,7 +636,7 @@ export default function Home() {
  </a>
  </div>
  <div className="mt-10 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
- <span>&copy; 2026 Whitfield &amp; Associates LLP. All rights reserved.</span>
+ <span>© 2026 Whitfield & Associates LLP. All rights reserved.</span>
  <div className="flex flex-wrap gap-4 justify-center gap-4 md:gap-6">
  <span className="footer-link py-1">Privacy Policy</span>
  <span className="footer-link py-1">Terms of Service</span>
